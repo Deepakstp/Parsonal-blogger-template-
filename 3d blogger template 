@@ -4,7 +4,7 @@
 <head>
     <meta charset='UTF-8'/>
     <meta content='width=device-width, initial-scale=1.0' name='viewport'/>
-    <meta name="theme-color" content="#f07eac"/>
+    <meta content='#f07eac' name='theme-color'/>
     <title>Bharti Tech</title>
     <b:skin><![CDATA[
         * {
@@ -159,9 +159,9 @@
     <header>
         <div class='logo'>
             <div class='logo-icon'>
-                <img src='your-icon-url.jpg' alt='Logo' />
+                <img alt='Logo' src='https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgbPWJZ1zY1PM2PqjZ-CxrmzkkT1iARWQ2rQu46PPJnJlmcT2LT5IN9bNs-G1wos19CB6gYyXhJXkAR3Ve9z2PifdTiFK_dO_l81zVAcdzQFu1u9yHkkfBV4E9bpl03qIx-r6Qy2Z1B-TH3F5OZByaLzXrtkG98DNgCj3CxRE8STIUTmIWXA6fGomfrWE0/s480/1000001884.jpg'/>
             </div>
-            <p>Bharti Tech</p>
+            <p>DEEPAK KUMAR</p>
         </div>
         <nav>
             <a href='#home'>Home</a>
@@ -170,8 +170,8 @@
             <a href='#about'>About</a>
         </nav>
         <div class='menu-btn' onclick='toggleMenu()'>
-            <div></div>
-            <div></div>
+            <div/>
+            <div/>
         </div>
     </header>
 
@@ -182,12 +182,7 @@
         <a href='#about'>About</a>
     </div>
 
-    <b:section id='main-section' class='content' showaddelement='yes'>
-        <div id='home' class='card'>Home Section</div>
-        <div id='services' class='card'>Services Section</div>
-        <div id='tools' class='card'>Tools Section</div>
-        <div id='about' class='card'>About Section</div>
-    </b:section>
+    <b:section class='content' id='main-section' showaddelement='yes'/>
 
     <footer>
         <p>&#169; 2025 Footer Section</p>
@@ -195,8 +190,8 @@
 
     <script>
         function toggleMenu() {
-            const menu = document.querySelector('.menu');
-            menu.classList.toggle('open');
+            const menu = document.querySelector(&#39;.menu&#39;);
+            menu.classList.toggle(&#39;open&#39;);
         }
     </script>
 </body>
