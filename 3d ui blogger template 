@@ -4,7 +4,10 @@
 <head>
     <meta charset='UTF-8'/>
     <meta content='width=device-width, initial-scale=1.0' name='viewport'/>
-    <meta content='#f07eac' name='theme-color'/>
+    <meta content='#f07eac' name='theme-color'/> <!-- Address Bar color -->
+    <meta content='yes' name='mobile-web-app-capable'/> <!-- Fullscreen mobile mode -->
+    <meta content='yes' name='apple-mobile-web-app-capable'/> <!-- iOS fullscreen mode -->
+    <meta content='black-translucent' name='apple-mobile-web-app-status-bar-style'/> <!-- Apple Status Bar Color -->
     <title>Bharti Tech</title>
     <b:skin><![CDATA[
         * {
@@ -44,18 +47,19 @@
         .logo-icon {
             width: 60px;
             height: 60px;
+            background: linear-gradient(135deg, #f07eac, #6d83f5);
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 10px;
             box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
-            overflow: hidden;
         }
 
-        .logo-icon img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        .logo-icon span {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.6);
         }
 
         nav {
@@ -68,13 +72,31 @@
             color: #555;
             font-weight: bold;
             font-size: 1rem;
+            position: relative;
             padding: 10px 15px;
             border-radius: 5px;
-            transition: background 0.3s, color 0.3s;
+            overflow: hidden;
+        }
+
+        nav a:after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: linear-gradient(135deg, #f07eac, #6d83f5, #ffdd00);
+            z-index: -1;
+            transition: all 0.4s ease;
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+
+        nav a:hover::after {
+            width: 200%;
+            height: 500%;
         }
 
         nav a:hover {
-            background: linear-gradient(135deg, #f07eac, #6d83f5);
             color: #fff;
         }
 
@@ -101,11 +123,12 @@
             padding: 15px;
             text-decoration: none;
             color: #555;
-            font-size: 1rem;
+            font-size: 1.2rem;
             margin-bottom: 10px;
             border: 1px solid #ddd;
             border-radius: 10px;
             background: #f5f5f5;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s;
         }
 
@@ -116,15 +139,38 @@
         }
 
         .menu-btn {
-            display: none;
+            display: block;
             cursor: pointer;
+            position: relative;
+            width: 30px;
+            height: 30px;
         }
 
         .menu-btn div {
-            width: 30px;
+            position: absolute;
+            width: 100%;
             height: 3px;
             background: #000;
-            margin: 6px 0;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .menu-btn div:nth-child(1) {
+            top: 6px;
+        }
+
+        .menu-btn div:nth-child(2) {
+            bottom: 6px;
+        }
+
+        .menu.open .menu-btn div:nth-child(1) {
+            transform: rotate(45deg);
+            top: 15px;
+        }
+
+        .menu.open .menu-btn div:nth-child(2) {
+            transform: rotate(-45deg);
+            bottom: 15px;
         }
 
         footer {
@@ -141,10 +187,6 @@
                 display: none;
             }
 
-            .menu-btn {
-                display: block;
-            }
-
             .menu {
                 display: block;
             }
@@ -153,15 +195,21 @@
                 padding: 10px 20px;
             }
         }
+
+        @media (min-width: 769px) {
+            .menu-btn {
+                display: none;
+            }
+        }
     ]]></b:skin>
 </head>
 <body>
     <header>
         <div class='logo'>
             <div class='logo-icon'>
-                <img alt='Logo' src='https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgbPWJZ1zY1PM2PqjZ-CxrmzkkT1iARWQ2rQu46PPJnJlmcT2LT5IN9bNs-G1wos19CB6gYyXhJXkAR3Ve9z2PifdTiFK_dO_l81zVAcdzQFu1u9yHkkfBV4E9bpl03qIx-r6Qy2Z1B-TH3F5OZByaLzXrtkG98DNgCj3CxRE8STIUTmIWXA6fGomfrWE0/s480/1000001884.jpg'/>
+                <span>BT</span>
             </div>
-            <p>DEEPAK KUMAR</p>
+            <p>Bharti Tech</p>
         </div>
         <nav>
             <a href='#home'>Home</a>
@@ -176,10 +224,10 @@
     </header>
 
     <div class='menu'>
-        <a href='#home'>Home</a>
-        <a href='#services'>Services</a>
-        <a href='#tools'>Tools</a>
-        <a href='#about'>About</a>
+        <a href='#home' onclick='navigateToSection(event, &quot;home&quot;)'>Home</a>
+        <a href='#services' onclick='navigateToSection(event, &quot;services&quot;)'>Services</a>
+        <a href='#tools' onclick='navigateToSection(event, &quot;tools&quot;)'>Tools</a>
+        <a href='#about' onclick='navigateToSection(event, &quot;about&quot;)'>About</a>
     </div>
 
     <b:section class='content' id='main-section' showaddelement='yes'/>
@@ -192,6 +240,16 @@
         function toggleMenu() {
             const menu = document.querySelector(&#39;.menu&#39;);
             menu.classList.toggle(&#39;open&#39;);
+        }
+
+        function navigateToSection(event, sectionId) {
+            event.preventDefault();
+            const menu = document.querySelector(&#39;.menu&#39;);
+            menu.classList.remove(&#39;open&#39;);
+            const targetSection = document.getElementById(sectionId);
+            if (targetSection) {
+                targetSection.scrollIntoView({ behavior: &#39;smooth&#39; });
+            }
         }
     </script>
 </body>
