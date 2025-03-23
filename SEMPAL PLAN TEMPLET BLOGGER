@@ -1,0 +1,113 @@
+
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="theme-color" content="#f07eac"/>
+    <meta name="mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+    
+    <!-- SEO Meta Tags -->
+    <title id="dynamic-title">Bharti Tech - Best Tech Solutions and Services</title>
+    <meta id="dynamic-description" name="description" content="Explore Bharti Tech for innovative tech solutions, expert services, and advanced tools for your digital needs."/>
+    <meta id="dynamic-keywords" name="keywords" content="tech solutions, digital tools, web services, software development, Bharti Tech"/>
+    <meta name="author" content="Bharti Tech"/>
+    <meta name="robots" content="index, follow"/>
+
+    <!-- Canonical Tag -->
+    <link id="dynamic-canonical" rel="canonical" href="https://www.bhartitech.com"/>
+
+    <!-- Open Graph for Social Sharing -->
+    <meta property="og:title" content="Bharti Tech - Best Tech Solutions and Services"/>
+    <meta property="og:description" content="Explore Bharti Tech for innovative tech solutions, expert services, and advanced tools for your digital needs."/>
+    <meta property="og:url" content="https://www.bhartitech.com"/>
+    <meta property="og:image" content="https://www.bhartitech.com/assets/og-image.jpg"/>
+    
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:title" content="Bharti Tech - Best Tech Solutions and Services"/>
+    <meta name="twitter:description" content="Explore Bharti Tech for innovative tech solutions, expert services, and advanced tools for your digital needs."/>
+    <meta name="twitter:image" content="https://www.bhartitech.com/assets/twitter-image.jpg"/>
+
+    <!-- Structured Data (Schema Markup) -->
+    <script type="application/ld+json" id="dynamic-schema">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Bharti Tech",
+      "url": "https://www.bhartitech.com",
+      "logo": "https://www.bhartitech.com/assets/logo.png",
+      "sameAs": [
+        "https://www.facebook.com/bhartitech",
+        "https://www.twitter.com/bhartitech",
+        "https://www.instagram.com/bhartitech"
+      ]
+    }
+    </script>
+
+    <!-- Sitemap for Auto Indexing -->
+    <link rel="sitemap" type="application/xml" href="https://www.bhartitech.com/sitemap.xml"/>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles.css"/>
+    <script>
+      function updateSEO(title, description, keywords, url, image) {
+        document.getElementById('dynamic-title').innerText = title;
+        document.getElementById('dynamic-description').setAttribute('content', description);
+        document.getElementById('dynamic-keywords').setAttribute('content', keywords);
+        document.getElementById('dynamic-canonical').setAttribute('href', url);
+
+        document.querySelector('meta[property="og:title"]').setAttribute('content', title);
+        document.querySelector('meta[property="og:description"]').setAttribute('content', description);
+        document.querySelector('meta[property="og:url"]').setAttribute('content', url);
+        document.querySelector('meta[property="og:image"]').setAttribute('content', image);
+
+        document.querySelector('meta[name="twitter:title"]').setAttribute('content', title);
+        document.querySelector('meta[name="twitter:description"]').setAttribute('content', description);
+        document.querySelector('meta[name="twitter:image"]').setAttribute('content', image);
+      }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <div class="logo-icon">
+                <span>BT</span>
+            </div>
+            <h1>Bharti Tech</h1>
+        </div>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#services">Services</a>
+            <a href="#tools">Tools</a>
+            <a href="#about">About</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home">
+            <h2>Welcome to Bharti Tech</h2>
+            <p>Your partner in innovative technology solutions.</p>
+        </section>
+        <section id="services">
+            <h2>Our Services</h2>
+            <p>Discover our range of services designed to accelerate your digital journey.</p>
+        </section>
+        <section id="tools">
+            <h2>Our Tools</h2>
+            <p>Explore powerful tools to simplify your workflows and achieve more.</p>
+        </section>
+        <section id="about">
+            <h2>About Bharti Tech</h2>
+            <p>Learn about our mission, vision, and the team behind Bharti Tech.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&#169; 2025 Bharti Tech. All rights reserved.</p>
+    </footer>
+</body>
+</html>
