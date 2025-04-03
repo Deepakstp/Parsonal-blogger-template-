@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+<head>
+  
+<!-- ब&#2381;ल&#2377;ग क&#2366; ट&#2366;इटल और ब&#2375;स&#2367;क Meta Tags -->
+<b:include data='blog' name='all-head-content'/>
+<title><data:blog.pageTitle/></title>
+<meta content='!' name='fragment'/>
+<meta content='dynamic' name='blogger-template'/>
+<meta content='IE=9,chrome=1' http-equiv='X-UA-Compatible'/>
+<meta content='initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width' name='viewport'/>
+
+<!-- Description Tag (ब&#2381;ल&#2377;ग क&#2366; स&#2306;क&#2381;ष&#2367;प&#2381;त व&#2367;वरण) -->
+<b:if cond='data:blog.metaDescription'>
+  <meta expr:content='data:blog.metaDescription' name='description'/>
+</b:if>
+
+<!-- Keywords (सर&#2381;च इ&#2306;जन क&#2375; ल&#2367;ए महत&#2381;वप&#2370;र&#2381;ण क&#2368;वर&#2381;ड&#2381;स) -->
+<meta content='Blogger, Blog, Template, Custom, SEO, Tutorial' name='keywords'/>
+
+<!-- Canonical URL (Duplicate Content स&#2375; बचन&#2375; क&#2375; ल&#2367;ए) -->
+<link expr:href='data:blog.url' rel='canonical'/>
+
+<!-- Author और Publisher Info -->
+<meta content='Your Name' name='author'/>
+<meta content='Your Blog Name' name='publisher'/>
+
+<!-- Open Graph Tags (Social Media क&#2375; ल&#2367;ए) -->
+<meta expr:content='data:blog.pageTitle' property='og:title'/>
+<meta expr:content='data:blog.metaDescription' property='og:description'/>
+<meta expr:content='data:blog.url' property='og:url'/>
+<meta content='article' property='og:type'/>
+<meta content='https://example.com/your-image.jpg' property='og:image'/>
+
+<!-- Twitter Card Tags (Twitter पर Preview क&#2375; ल&#2367;ए) -->
+<meta content='summary_large_image' name='twitter:card'/>
+<meta expr:content='data:blog.pageTitle' name='twitter:title'/>
+<meta expr:content='data:blog.metaDescription' name='twitter:description'/>
+<meta content='https://example.com/your-image.jpg' name='twitter:image'/>
+
+<!-- Robots Meta Tag (Indexing Control) -->
+<meta content='index, follow' name='robots'/>
+
+
+  
+  
+  
+    <title><data:blog.title/>Bharti Tech </title>
+    <b:skin><![CDATA[
+        /* CSS यहाँ डालें */
+    ]]></b:skin>
+</head>
+<body>
+    <b:section class='main' id='main-section' showaddelement='yes'/>
+</body>
+</html>
