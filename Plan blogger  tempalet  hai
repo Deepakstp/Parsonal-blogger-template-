@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html b:version='2' class='v2' expr:dir='data:blog.languageDirection' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.blogger.com/atom/ns#' xmlns:data='blogger' xmlns:expr='http://schemas.google.com/blogger/2008/kind#expr'>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
+  <title><data:blog.pageTitle/></title>
+  <b:skin><![CDATA[
+    /* Your CSS styles go here */
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+  ]]></b:skin>
+</head>
+<body>
+  <div id='outer-wrapper'>
+    <div id='header'>
+      <h1><data:blog.title/></h1>
+      <data:blog.description/>
+    </div>
+    <div id='main-wrapper'>
+      <div id='content-wrapper'>
+        <b:section id='main' maxwidgets='1' showaddelement='yes'>
+          <b:widget id='Blog1' locked='true' title='Blog Posts' type='Blog'/>
+        </b:section>
+      </div>
+      <div id='sidebar-wrapper'>
+        <b:section id='sidebar' maxwidgets='1' showaddelement='yes'>
+          <b:widget id='Label1' title='Labels' type='Label'/>
+        </b:section>
+      </div>
+    </div>
+    <div id='footer'>
+      <p>Copyright <data:blog.copyright/> - Designed by You</p>
+    </div>
+  </div>
+</body>
+</html>
