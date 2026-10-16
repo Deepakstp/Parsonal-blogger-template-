@@ -1,0 +1,232 @@
+<div class="dg-contact-wrapper">
+  
+  <!-- CONTACT FORM CARD -->
+  <div class="dg-contact-card" id="dgFormCard">
+    <div class="dg-card-badge">
+      <i class="fas fa-headset"></i> 24/7 OFFICIAL SUPPORT
+    </div>
+    <h2 class="dg-card-title">Contact <span>Diagnolite Tech</span></h2>
+    <p class="dg-card-sub">Get in touch with us by filling out the form below.</p>
+
+    <!-- 100% Reliable Standard HTML Form Post with Target iframe -->
+    <form id="dgContactForm" action="https://formsubmit.co/diagnolite@gmail.com" method="POST" target="hidden_iframe" onsubmit="showThankYouScreen()">
+      
+      <!-- FormSubmit Configuration Hidden Fields -->
+      <input type="hidden" name="_subject" value="New Inquiry - Diagnolite Tech Solutions" />
+      <input type="hidden" name="_captcha" value="false" />
+      <input type="hidden" name="_template" value="table" />
+      
+      <div class="dg-input-group">
+        <label>Your Name *</label>
+        <div class="dg-input-box">
+          <i class="fas fa-user"></i>
+          <input type="text" name="Name" id="dgNameInput" placeholder="Enter your full name..." required />
+        </div>
+      </div>
+
+      <div class="dg-input-group">
+        <label>Email Address *</label>
+        <div class="dg-input-box">
+          <i class="fas fa-envelope"></i>
+          <input type="email" name="Email" placeholder="example@gmail.com" required />
+        </div>
+      </div>
+
+      <div class="dg-input-group">
+        <label>Your Message *</label>
+        <textarea name="Message" rows="4" placeholder="Type your message here..." required></textarea>
+      </div>
+
+      <button type="submit" class="dg-submit-btn" id="dgSubmitBtn">
+        <span>SEND MESSAGE</span> <i class="fas fa-paper-plane"></i>
+      </button>
+    </form>
+  </div>
+
+  <!-- WELCOME & THANK YOU SCREEN -->
+  <div class="dg-thankyou-card" id="dgThankYouCard" style="display: none;">
+    <div class="dg-check-wrap">
+      <svg class="dg-checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+        <circle class="dg-checkmark-circle" cx="26" cy="26" r="25" fill="none"/>
+        <path class="dg-checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+      </svg>
+    </div>
+
+    <div class="dg-welcome-pill">WELCOME TO DIAGNOLITE FAMILY</div>
+    <h2 class="dg-ty-title">Thank You, <span id="dgUserName">Friend</span>! 🎉</h2>
+    <p class="dg-ty-msg">
+      Your message has been successfully delivered to <strong>Diagnolite Tech Solutions</strong>. We have recorded your request and will reply to your email soon.
+    </p>
+
+    <button onclick="resetDgForm()" class="dg-back-btn">
+      <i class="fas fa-arrow-left"></i> Send Another Message
+    </button>
+  </div>
+
+</div>
+
+<!-- Hidden Iframe to handle background form submission without page redirect -->
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+
+<!-- FontAwesome Icons Support -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+.dg-contact-wrapper {
+  max-width: 560px;
+  margin: 10px auto 30px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  text-align: left;
+}
+.dg-contact-card, .dg-thankyou-card {
+  background: #ffffff;
+  border: 1.5px solid #d1fae5;
+  border-radius: 26px;
+  padding: 32px 26px;
+  box-shadow: 0 15px 40px rgba(30, 192, 93, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+.dg-card-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #f4fbf7;
+  border: 1px solid #a7f3d0;
+  color: #1EC05D;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 5px 14px;
+  border-radius: 999px;
+  margin-bottom: 12px;
+  letter-spacing: 0.6px;
+}
+.dg-card-title {
+  font-size: 24px;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0 0 8px;
+}
+.dg-card-title span { color: #1EC05D; }
+.dg-card-sub {
+  font-size: 13.5px;
+  color: #64748b;
+  margin: 0 0 24px;
+  line-height: 1.55;
+}
+.dg-input-group {
+  margin-bottom: 18px;
+  text-align: left;
+}
+.dg-input-group label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: #334155;
+  margin-bottom: 6px;
+}
+.dg-input-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.dg-input-box i {
+  position: absolute;
+  left: 14px;
+  color: #1EC05D;
+  font-size: 14px;
+}
+.dg-input-box input, .dg-input-group textarea {
+  width: 100%;
+  background: #f8fafc;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 12px 14px 12px 40px;
+  font-size: 13.5px;
+  color: #0f172a;
+  font-family: inherit;
+  outline: none;
+  transition: all 0.25s ease;
+}
+.dg-input-group textarea { padding: 12px 14px; resize: vertical; }
+.dg-input-box input:focus, .dg-input-group textarea:focus {
+  background: #ffffff;
+  border-color: #1EC05D;
+  box-shadow: 0 0 0 4px rgba(30, 192, 93, 0.12);
+}
+.dg-submit-btn {
+  width: 100%;
+  background: #1EC05D;
+  color: #ffffff;
+  border: none;
+  border-radius: 14px;
+  padding: 14px 20px;
+  font-size: 13.5px;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 8px 20px rgba(30, 192, 93, 0.28);
+  transition: all 0.25s ease;
+}
+.dg-submit-btn:hover { background: #16a34a; transform: translateY(-2px); }
+
+/* Welcome Screen Animation Styles */
+.dg-thankyou-card {
+  text-align: center;
+  padding: 42px 26px;
+  animation: dgPopIn 0.55s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+@keyframes dgPopIn {
+  0% { opacity: 0; transform: scale(0.88) translateY(20px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+.dg-check-wrap { display: flex; justify-content: center; margin-bottom: 18px; }
+.dg-checkmark {
+  width: 76px; height: 76px; border-radius: 50%; display: block;
+  stroke-width: 3; stroke: #1EC05D; stroke-miterlimit: 10;
+}
+.dg-checkmark-circle {
+  stroke-dasharray: 166; stroke-dashoffset: 166; stroke-width: 3; stroke-miterlimit: 10;
+  stroke: #1EC05D; fill: #f4fbf7; animation: dgStroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+}
+.dg-checkmark-check {
+  transform-origin: 50% 50%; stroke-dasharray: 48; stroke-dashoffset: 48; stroke-width: 4; stroke-linecap: round;
+  animation: dgStroke 0.35s cubic-bezier(0.65, 0, 0.45, 1) 0.55s forwards;
+}
+@keyframes dgStroke { 100% { stroke-dashoffset: 0; } }
+.dg-welcome-pill {
+  display: inline-block; background: rgba(30, 192, 93, 0.12); color: #065f46;
+  font-size: 10.5px; font-weight: 800; padding: 5px 14px; border-radius: 999px;
+  letter-spacing: 1px; margin-bottom: 10px;
+}
+.dg-ty-title { font-size: 25px; font-weight: 800; color: #0f172a; margin: 0 0 10px; }
+.dg-ty-title span { color: #1EC05D; }
+.dg-ty-msg { font-size: 14.5px; color: #475569; line-height: 1.65; max-width: 440px; margin: 0 auto 24px; font-weight: 500; }
+.dg-back-btn {
+  background: #f4fbf7; color: #1EC05D; border: 1.5px solid #1EC05D;
+  padding: 10px 20px; border-radius: 999px; font-size: 12.5px; font-weight: 800;
+  cursor: pointer; display: inline-flex; align-items: center; gap: 8px;
+}
+.dg-back-btn:hover { background: #1EC05D; color: #ffffff; }
+</style>
+
+<script>
+function showThankYouScreen() {
+  const userName = document.getElementById('dgNameInput').value || 'Friend';
+  document.getElementById('dgUserName').textContent = userName;
+  
+  // Smooth switch to Thank You screen
+  document.getElementById('dgFormCard').style.display = 'none';
+  document.getElementById('dgThankYouCard').style.display = 'block';
+}
+
+function resetDgForm() {
+  document.getElementById('dgContactForm').reset();
+  document.getElementById('dgThankYouCard').style.display = 'none';
+  document.getElementById('dgFormCard').style.display = 'block';
+}
+</script>
