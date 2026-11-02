@@ -6,6 +6,16 @@
   <title>Machinery & Diesel Register Pro</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
+    :root {
+      --md-sys-color-primary: #006874;
+      --md-sys-color-on-primary: #ffffff;
+      --md-sys-color-primary-container: #6ff7e6;
+      --md-sys-color-surface: #f4fbfb;
+      --md-sys-color-on-surface: #191c1c;
+      --md-sys-color-outline: #6f7979;
+      --md-sys-color-surface-container: #ffffff;
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -15,8 +25,8 @@
     }
 
     body {
-      background: #f1f5f9;
-      color: #0f172a;
+      background: var(--md-sys-color-surface);
+      color: var(--md-sys-color-on-surface);
       padding-bottom: 90px;
     }
 
@@ -24,13 +34,13 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: #0f172a;
-      color: white;
+      background: var(--md-sys-color-primary);
+      color: var(--md-sys-color-on-primary);
       padding: 14px 18px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
 
     .header-title {
@@ -61,18 +71,17 @@
 
     /* Machine Selector Bar */
     .machine-bar {
-      background: #1e293b;
+      background: #004f58;
       color: white;
       padding: 10px 16px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       font-size: 14px;
-      border-bottom: 1px solid #334155;
     }
 
     .machine-bar select {
-      background: #334155;
+      background: #00363d;
       color: white;
       border: none;
       padding: 6px 10px;
@@ -83,10 +92,10 @@
     }
 
     .add-machine-btn {
-      background: #2563eb;
-      color: white;
+      background: var(--md-sys-color-primary-container);
+      color: #002023;
       border: none;
-      padding: 6px 10px;
+      padding: 6px 12px;
       border-radius: 8px;
       font-size: 13px;
       font-weight: bold;
@@ -101,22 +110,22 @@
 
     .month-item {
       padding: 16px;
-      background: white;
+      background: var(--md-sys-color-surface-container);
       margin-bottom: 12px;
-      border-radius: 14px;
-      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+      border-radius: 16px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
       cursor: pointer;
       transition: all 0.2s ease;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border: 1px solid #e2e8f0;
+      border: 1px solid #dfe3e3;
     }
 
     .month-item:hover {
       transform: translateY(-2px);
-      box-shadow: 0 5px 14px rgba(0, 0, 0, 0.08);
-      border-color: #2563eb;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      border-color: var(--md-sys-color-primary);
     }
 
     .month-info {
@@ -127,25 +136,24 @@
     .month-title {
       font-weight: 700;
       font-size: 16px;
-      color: #0f172a;
+      color: var(--md-sys-color-on-surface);
     }
 
     .month-sub {
       font-size: 12px;
-      color: #64748b;
+      color: var(--md-sys-color-outline);
       margin-top: 3px;
     }
 
     .month-badge {
       font-weight: 700;
-      color: #2563eb;
-      background: #eff6ff;
+      color: var(--md-sys-color-primary);
+      background: #e0f8f8;
       padding: 6px 12px;
-      border-radius: 8px;
+      border-radius: 10px;
       font-size: 13px;
     }
 
-    /* Entry Cards Layout inside Month View */
     .entries-grid {
       display: flex;
       flex-direction: column;
@@ -154,11 +162,11 @@
     }
 
     .entry-card {
-      background: white;
-      border-radius: 12px;
+      background: var(--md-sys-color-surface-container);
+      border-radius: 16px;
       padding: 14px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.04);
-      border: 1px solid #e2e8f0;
+      border: 1px solid #dfe3e3;
       position: relative;
       user-select: none;
     }
@@ -169,8 +177,8 @@
       align-items: center;
       font-weight: 700;
       font-size: 14px;
-      color: #1e293b;
-      border-bottom: 1px solid #f1f5f9;
+      color: var(--md-sys-color-on-surface);
+      border-bottom: 1px solid #edf1f1;
       padding-bottom: 6px;
       margin-bottom: 8px;
     }
@@ -180,69 +188,67 @@
       grid-template-columns: repeat(2, 1fr);
       gap: 6px;
       font-size: 12px;
-      color: #475569;
+      color: #414848;
     }
 
     .entry-card-body span strong {
-      color: #0f172a;
+      color: var(--md-sys-color-on-surface);
     }
 
     .entry-hint {
       font-size: 10px;
-      color: #94a3b8;
+      color: var(--md-sys-color-outline);
       text-align: right;
       margin-top: 6px;
     }
 
-    /* Summary Bar */
     .summary-row {
       display: flex;
-      gap: 10px;
+      gap: 8px;
       margin-bottom: 14px;
       flex-wrap: wrap;
     }
 
     .summary-card {
       flex: 1;
-      min-width: 120px;
-      background: white;
-      border: 1px solid #e2e8f0;
-      border-radius: 12px;
-      padding: 12px;
+      min-width: 100px;
+      background: var(--md-sys-color-surface-container);
+      border: 1px solid #dfe3e3;
+      border-radius: 14px;
+      padding: 10px;
       text-align: center;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.04);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.02);
     }
 
     .summary-card .label {
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 600;
-      color: #64748b;
+      color: var(--md-sys-color-outline);
       text-transform: uppercase;
     }
 
     .summary-card .value {
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 700;
       margin-top: 4px;
-      color: #0f172a;
+      color: var(--md-sys-color-on-surface);
     }
 
-    /* Floating Action Button */
     #addBtn {
       position: fixed;
       bottom: 24px;
       right: 24px;
       width: 60px;
       height: 60px;
-      border-radius: 50%;
-      background: #2563eb;
-      color: white;
+      border-radius: 20px;
+      background: var(--md-sys-color-primary-container);
+      color: #002023;
       border: none;
       font-size: 24px;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 4px 16px rgba(37, 99, 235, 0.4);
+      box-shadow: 0 4px 16px rgba(0, 104, 116, 0.3);
       cursor: pointer;
       z-index: 100;
       transition: transform 0.2s;
@@ -250,7 +256,6 @@
 
     #addBtn:active { transform: scale(0.92); }
 
-    /* Bottom Sheet Form & Modals */
     #overlay {
       position: fixed;
       top: 0; left: 0; width: 100%; height: 100%;
@@ -264,13 +269,13 @@
       position: fixed;
       left: 0; bottom: -100%;
       width: 100%;
-      background: white;
-      border-top-left-radius: 24px;
-      border-top-right-radius: 24px;
+      background: var(--md-sys-color-surface-container);
+      border-top-left-radius: 28px;
+      border-top-right-radius: 28px;
       padding: 24px;
-      box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.15);
       z-index: 201;
-      transition: bottom 0.3s ease-out;
+      transition: bottom 0.3s cubic-bezier(0.1, 0.9, 0.2, 1);
       max-height: 90vh;
       overflow-y: auto;
     }
@@ -280,40 +285,73 @@
     #addForm h3 {
       text-align: center;
       margin-bottom: 18px;
-      color: #0f172a;
+      color: var(--md-sys-color-on-surface);
       font-size: 18px;
     }
 
     .form-group {
       margin-bottom: 12px;
+      position: relative;
     }
 
     .form-group label {
       display: block;
       font-size: 12px;
       font-weight: 600;
-      color: #64748b;
+      color: var(--md-sys-color-outline);
       margin-bottom: 4px;
     }
 
     .form-group input, .form-group select {
       width: 100%;
-      padding: 10px 12px;
-      border: 1px solid #cbd5e1;
-      border-radius: 10px;
+      padding: 12px;
+      border: 1px solid var(--md-sys-color-outline);
+      border-radius: 12px;
       font-size: 14px;
       outline: none;
+      background: #fff;
     }
 
-    .form-group input:focus { border-color: #2563eb; }
+    .form-group input:focus { border-color: var(--md-sys-color-primary); border-width: 2px; }
+
+    /* Custom Smart Remark Dropdown Styles (Suggestions placed UPWARD) */
+    .custom-remark-dropdown {
+      display: none;
+      position: absolute;
+      bottom: 100%;
+      left: 0;
+      width: 100%;
+      background: white;
+      border: 1px solid var(--md-sys-color-outline);
+      border-radius: 12px;
+      box-shadow: 0 -8px 20px rgba(0,0,0,0.12);
+      z-index: 250;
+      max-height: 160px;
+      overflow-y: auto;
+      margin-bottom: 6px;
+    }
+
+    .custom-remark-item {
+      padding: 10px 14px;
+      font-size: 13px;
+      color: var(--md-sys-color-on-surface);
+      cursor: pointer;
+      border-bottom: 1px solid #f1f5f9;
+    }
+
+    .custom-remark-item:hover {
+      background: #e0f8f8;
+      color: var(--md-sys-color-primary);
+      font-weight: 600;
+    }
 
     .btn-submit {
       width: 100%;
-      padding: 12px;
-      background: #2563eb;
-      color: white;
+      padding: 14px;
+      background: var(--md-sys-color-primary);
+      color: var(--md-sys-color-on-primary);
       border: none;
-      border-radius: 10px;
+      border-radius: 12px;
       font-size: 15px;
       font-weight: 700;
       margin-top: 10px;
@@ -322,84 +360,323 @@
 
     .btn-cancel {
       width: 100%;
-      padding: 12px;
-      background: #e2e8f0;
-      color: #334155;
+      padding: 14px;
+      background: #edf1f1;
+      color: var(--md-sys-color-on-surface);
       border: none;
-      border-radius: 10px;
+      border-radius: 12px;
       font-size: 15px;
       font-weight: 700;
       margin-top: 8px;
       cursor: pointer;
     }
 
-    /* Custom Machine Modal Style */
-    #machineModal {
+    /* CUSTOM MATERIAL 3 DIALOGS FOR ALERTS / CONFIRMATIONS */
+    .custom-dialog-backdrop {
       display: none;
       position: fixed;
       top: 0; left: 0; width: 100%; height: 100%;
       background: rgba(0,0,0,0.5);
-      z-index: 300;
+      z-index: 600;
+      justify-content: center;
+      align-items: center;
+      padding: 24px;
+      backdrop-filter: blur(3px);
+    }
+
+    .custom-dialog-box {
+      background: var(--md-sys-color-surface-container);
+      border-radius: 28px;
+      width: 100%;
+      max-width: 320px;
+      padding: 24px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      animation: scaleUp 0.2s ease-out;
+    }
+
+    @keyframes scaleUp {
+      from { transform: scale(0.9); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .custom-dialog-icon {
+      font-size: 36px;
+      color: var(--md-sys-color-primary);
+      margin-bottom: 12px;
+    }
+
+    .custom-dialog-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--md-sys-color-on-surface);
+      margin-bottom: 8px;
+    }
+
+    .custom-dialog-message {
+      font-size: 14px;
+      color: var(--md-sys-color-outline);
+      margin-bottom: 20px;
+      line-height: 1.4;
+      word-break: break-all;
+    }
+
+    .custom-dialog-actions {
+      display: flex;
+      gap: 10px;
+    }
+
+    .custom-dialog-actions button {
+      flex: 1;
+      padding: 10px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-dialog-secondary {
+      background: #edf1f1;
+      color: var(--md-sys-color-on-surface);
+    }
+
+    .btn-dialog-primary {
+      background: var(--md-sys-color-primary);
+      color: var(--md-sys-color-on-primary);
+    }
+
+    /* PROCESSING LOADER OVERLAY */
+    #processingLoader {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
+      z-index: 700;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      color: white;
+      backdrop-filter: blur(4px);
+    }
+
+    .spinner {
+      width: 48px;
+      height: 48px;
+      border: 4px solid rgba(255,255,255,0.3);
+      border-top: 4px solid var(--md-sys-color-primary-container);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-bottom: 12px;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* CUSTOM IN-APP DATE & TIME PICKER MODALS */
+    .custom-modal-backdrop {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
+      z-index: 500;
       justify-content: center;
       align-items: center;
       padding: 16px;
-      backdrop-filter: blur(2px);
+      backdrop-filter: blur(4px);
     }
 
-    .machine-modal-content {
+    .custom-picker-box {
       background: white;
-      border-radius: 20px;
-      padding: 24px;
+      border-radius: 28px;
       width: 100%;
-      max-width: 380px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      max-width: 320px;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
     }
 
-    #emptyState {
-      text-align: center;
-      padding: 50px 20px;
-      color: #64748b;
+    .custom-picker-header {
+      background: var(--md-sys-color-primary);
+      color: var(--md-sys-color-on-primary);
+      padding: 18px 20px;
+      text-align: left;
     }
 
-    #emptyState i {
-      font-size: 48px;
+    .custom-picker-header .sub-title {
+      font-size: 12px;
+      text-transform: uppercase;
+      opacity: 0.8;
+    }
+
+    .custom-picker-header .main-title {
+      font-size: 26px;
+      font-weight: 700;
+      margin-top: 2px;
+    }
+
+    .custom-picker-body {
+      padding: 16px;
+      background: #ffffff;
+    }
+
+    .cal-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 700;
+      color: var(--md-sys-color-on-surface);
       margin-bottom: 12px;
-      color: #cbd5e1;
     }
 
-    /* Print / PDF Landscape Specific CSS */
+    .cal-nav button {
+      background: none;
+      border: none;
+      font-size: 16px;
+      color: var(--md-sys-color-outline);
+      cursor: pointer;
+      padding: 6px 12px;
+    }
+
+    .cal-weekdays {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      text-align: center;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--md-sys-color-outline);
+      margin-bottom: 8px;
+    }
+
+    .cal-days {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 4px;
+      text-align: center;
+    }
+
+    .cal-day-cell {
+      padding: 8px 0;
+      font-size: 13px;
+      font-weight: 600;
+      border-radius: 50%;
+      cursor: pointer;
+      color: var(--md-sys-color-on-surface);
+    }
+
+    .cal-day-cell:hover { background: #edf1f1; }
+
+    .cal-day-cell.selected {
+      background: var(--md-sys-color-primary) !important;
+      color: white !important;
+    }
+
+    .cal-day-cell.empty { pointer-events: none; }
+
+    .clock-dial-container {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: #f4fbfb;
+      margin: 10px auto;
+    }
+
+    .clock-number {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      text-align: center;
+      line-height: 30px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #414848;
+      cursor: pointer;
+      border-radius: 50%;
+    }
+
+    .clock-number.active {
+      background: var(--md-sys-color-primary);
+      color: white;
+    }
+
+    .clock-hand {
+      position: absolute;
+      bottom: 50%;
+      left: calc(50% - 1px);
+      width: 2px;
+      height: 70px;
+      background: var(--md-sys-color-primary);
+      transform-origin: bottom center;
+      pointer-events: none;
+    }
+
+    .clock-hand::after {
+      content: '';
+      position: absolute;
+      top: -6px;
+      left: -5px;
+      width: 12px;
+      height: 12px;
+      background: var(--md-sys-color-primary);
+      border-radius: 50%;
+    }
+
+    .ampm-switch {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .ampm-btn {
+      padding: 6px 16px;
+      border-radius: 20px;
+      border: 1px solid var(--md-sys-color-outline);
+      font-size: 12px;
+      font-weight: 700;
+      background: #f8fafc;
+      color: var(--md-sys-color-outline);
+      cursor: pointer;
+    }
+
+    .ampm-btn.active {
+      background: var(--md-sys-color-primary);
+      color: white;
+      border-color: var(--md-sys-color-primary);
+    }
+
+    .picker-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 16px;
+      padding: 12px 20px;
+      background: #ffffff;
+      border-top: 1px solid #edf1f1;
+    }
+
+    .picker-actions button {
+      background: none;
+      border: none;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--md-sys-color-primary);
+      cursor: pointer;
+      text-transform: uppercase;
+    }
+
     .print-container { display: none; }
 
     @media print {
-      .no-print, .header, .machine-bar, #addBtn, #overlay, #addForm, #machineModal, #homeView, #monthDetailView { display: none !important; }
+      .no-print, .header, .machine-bar, #addBtn, #overlay, #addForm, #machineModal, #printOptionsModal, .custom-modal-backdrop, .custom-dialog-backdrop, #processingLoader, #homeView, #monthDetailView { display: none !important; }
       body { background: white; padding: 0; }
       .print-container { display: block !important; width: 100%; background: #fff; padding: 0; }
-      
-      .header-table, .data-table {
-        width: 100%;
-        border-collapse: collapse;
-      }
-      .header-table td {
-        border: 1px solid #000;
-        padding: 6px 8px;
-        font-weight: bold;
-        font-size: 11px;
-        text-transform: uppercase;
-      }
-      .data-table {
-        margin-top: -1px;
-      }
-      .data-table th, .data-table td {
-        border: 1px solid #000;
-        padding: 6px 3px;
-        text-align: center;
-        font-size: 10px;
-        height: 22px;
-      }
-      .data-table th {
-        background-color: #f1f5f9 !important;
-        -webkit-print-color-adjust: exact;
-      }
+      .header-table, .data-table { width: 100%; border-collapse: collapse; }
+      .header-table td { border: 1px solid #000; padding: 6px 8px; font-weight: bold; font-size: 11px; text-transform: uppercase; }
+      .data-table { margin-top: -1px; }
+      .data-table th, .data-table td { border: 1px solid #000; padding: 6px 3px; text-align: center; font-size: 10px; height: 22px; }
+      .data-table th { background-color: #f1f5f9 !important; -webkit-print-color-adjust: exact; }
       @page { size: landscape; margin: 6mm; }
     }
   </style>
@@ -420,32 +697,34 @@
     <div style="display:flex; align-items:center; gap:8px;">
       <span>Machine:</span>
       <select id="machineSelect" onchange="switchMachine()"></select>
-      <button class="header-icon" style="width:30px; height:30px; font-size:12px;" onclick="openMachineSettings()" title="Settings"><i class="fa fa-cog"></i></button>
+      <button class="header-icon" style="width:30px; height:30px; font-size:12px; background:rgba(0,0,0,0.2);" onclick="openMachineSettings()" title="Settings"><i class="fa fa-cog"></i></button>
     </div>
     <button class="add-machine-btn" onclick="openAddMachineModal()"><i class="fa fa-plus"></i> Machine</button>
   </div>
 
-  <!-- Home View (Month List) -->
+  <!-- Home View -->
   <div id="homeView" class="container no-print">
-    <div style="margin-bottom: 10px; font-weight: 700; color: #475569; font-size: 14px;">Select Month Register:</div>
+    <div style="margin-bottom: 10px; font-weight: 700; color: var(--md-sys-color-outline); font-size: 14px;">Select Month Register:</div>
     <div id="monthList"></div>
-    <div id="emptyState" style="display:none;">
-      <i class="fa fa-folder-open"></i>
-      <p>No records found for this machine. Click the '+' button below to add your first entry.</p>
+    <div id="emptyState" style="display:none; text-align:center; padding:50px 20px; color:var(--md-sys-color-outline);">
+      <i class="fa fa-folder-open" style="font-size:48px; margin-bottom:12px;"></i>
+      <p>No records found. Click '+' to add your first entry.</p>
     </div>
   </div>
 
-  <!-- Month Detail View (Card List inside App) -->
+  <!-- Month Detail View -->
   <div id="monthDetailView" class="container no-print" style="display:none;">
     <div style="margin-bottom: 12px; display:flex; justify-content:space-between; align-items:center;">
-      <button class="add-machine-btn" style="background:#475569;" onclick="goHome()"><i class="fa fa-arrow-left"></i> Back</button>
-      <div style="display:flex; gap:8px;">
-        <button class="add-machine-btn" style="background:#059669;" onclick="window.print()"><i class="fa fa-print"></i> Print / PDF Landscape</button>
-      </div>
+      <button class="add-machine-btn" style="background:#edf1f1; color:var(--md-sys-color-on-surface);" onclick="goHome()"><i class="fa fa-arrow-left"></i> Back</button>
+      <button class="add-machine-btn" style="background:#006874; color:white;" onclick="openPrintOptionsModal()"><i class="fa fa-print"></i> Print / PDF Landscape</button>
     </div>
 
     <!-- Summary Cards -->
     <div class="summary-row">
+      <div class="summary-card">
+        <div class="label">Total Entries</div>
+        <div class="value" id="sumEntries">0</div>
+      </div>
       <div class="summary-card">
         <div class="label">Total Diesel</div>
         <div class="value" id="sumDiesel">0 Ltr</div>
@@ -454,17 +733,17 @@
         <div class="label">Total Hours</div>
         <div class="value" id="sumHours">0 h</div>
       </div>
-      <div class="summary-card">
-        <div class="label">Total Entries</div>
-        <div class="value" id="sumEntries">0</div>
+      <div class="summary-card" style="background: #e0f8f8; border-color: #006874;">
+        <div class="label" style="color: #004f58;">Diesel / Hour</div>
+        <div class="value" id="sumAvgDiesel" style="color: #00363d;">0 Ltr/h</div>
       </div>
     </div>
 
-    <div style="font-weight: 700; font-size: 15px; color: #1e293b; margin-bottom: 8px;" id="monthDetailHeading">Entries</div>
+    <div style="font-weight: 700; font-size: 15px; color: var(--md-sys-color-on-surface); margin-bottom: 8px;" id="monthDetailHeading">Entries</div>
     <div class="entries-grid" id="entriesCardList"></div>
   </div>
 
-  <!-- Hidden Official Landscape PDF Register View (Only for Print) -->
+  <!-- Print Container -->
   <div class="print-container" id="printContainerSection">
     <table class="header-table">
       <tr>
@@ -476,16 +755,16 @@
     <table class="data-table">
       <thead>
         <tr>
-          <th style="width: 7%;">DATE</th>
-          <th style="width: 9%;">OPP READING</th>
-          <th style="width: 9%;">CLOSING READING</th>
-          <th style="width: 9%;">DAILY WORKING HOURS</th>
-          <th style="width: 9%;">DIESEL ISSUE</th>
-          <th style="width: 7%;">ISSUER SIGN</th>
-          <th style="width: 7%;">IDLE / BD</th>
-          <th style="width: 26%;">REMARK (WORK DONE)</th>
-          <th style="width: 7%;">SIG. OPT.</th>
-          <th style="width: 7%;">SIGN AUTH.</th>
+          <th>DATE</th>
+          <th>OPP READING</th>
+          <th>CLOSING READING</th>
+          <th>DAILY WORKING HOURS</th>
+          <th>DIESEL ISSUE</th>
+          <th>ISSUER SIGN</th>
+          <th>IDLE / BD</th>
+          <th>REMARK (WORK DONE)</th>
+          <th>SIG. OPT.</th>
+          <th>SIGN AUTH.</th>
         </tr>
       </thead>
       <tbody id="printTableBody"></tbody>
@@ -501,20 +780,23 @@
     <h3 id="formTitle">Add Daily Entry</h3>
     <form onsubmit="saveEntryData(event)">
       <input type="hidden" id="editIndex" value="-1">
+      <input type="hidden" id="inputDate" required />
+      <input type="hidden" id="inputOpp" required />
+      <input type="hidden" id="inputClosing" required />
+
       <div class="form-group">
-        <label>Date</label>
-        <input type="date" id="inputDate" required />
+        <label>Date 📅</label>
+        <input type="text" id="displayDateInput" readonly onclick="openInAppCalendar()" placeholder="Select Date" style="cursor:pointer; background:#f8fafc;" />
       </div>
 
-      <!-- Time Pickers for Easy Watch Selection -->
       <div style="display: flex; gap: 10px;">
         <div class="form-group" style="flex: 1;">
           <label>Opening Time 🕒</label>
-          <input type="time" id="inputOpp" onchange="autoCalculateHours()" required />
+          <input type="text" id="displayOppInput" readonly onclick="openInAppClock('opp')" placeholder="Select Opening Time" style="cursor:pointer; background:#f8fafc;" />
         </div>
         <div class="form-group" style="flex: 1;">
           <label>Closing Time 🕒</label>
-          <input type="time" id="inputClosing" onchange="autoCalculateHours()" required />
+          <input type="text" id="displayClosingInput" readonly onclick="openInAppClock('closing')" placeholder="Select Closing Time" style="cursor:pointer; background:#f8fafc;" />
         </div>
       </div>
 
@@ -530,20 +812,26 @@
         <label>Idle / Breakdown</label>
         <input type="text" id="inputIdle" placeholder="e.g. 2h or -" />
       </div>
+      
+      <!-- Remark with suggestions positioned UPWARD -->
       <div class="form-group">
-        <label>Remark (Work Done) - Smart Auto Suggestion</label>
-        <input type="text" id="inputRemark" list="remarkSuggestions" placeholder="Type or select previous remark..." />
-        <datalist id="remarkSuggestions"></datalist>
+        <label>Remark (Work Done)</label>
+        <div style="display: flex; gap: 6px; position: relative;">
+          <input type="text" id="inputRemark" placeholder="Type or select remark..." autocomplete="off" style="flex: 1;" onfocus="showRemarkDropdown()" />
+          <button type="button" onclick="toggleRemarkDropdown(event)" style="background: #edf1f1; border: 1px solid var(--md-sys-color-outline); border-radius: 12px; width: 42px; cursor: pointer; color: var(--md-sys-color-outline); display: flex; align-items: center; justify-content: center;"><i class="fa fa-chevron-up"></i></button>
+          <div id="customRemarkDropdown" class="custom-remark-dropdown"></div>
+        </div>
       </div>
+
       <button type="submit" class="btn-submit">Save Entry</button>
       <button type="button" class="btn-cancel" onclick="hideForm()">Cancel</button>
     </form>
   </div>
 
-  <!-- Custom Professional Machine Modal (Replaces browser prompt) -->
-  <div id="machineModal" class="no-print">
-    <div class="machine-modal-content">
-      <h3 id="machineModalTitle" style="margin-bottom: 16px; color: #0f172a; font-size: 18px; text-align: center;">Add Machine</h3>
+  <!-- Custom Machine Modal -->
+  <div id="machineModal" class="no-print custom-modal-backdrop" style="display:none;">
+    <div class="custom-picker-box" style="max-width: 360px; padding: 24px;">
+      <h3 id="machineModalTitle" style="margin-bottom: 16px; color: var(--md-sys-color-on-surface); font-size: 18px; text-align: center;">Add Machine</h3>
       <div class="form-group">
         <label>Machine / Vehicle Name</label>
         <input type="text" id="modalMachineName" placeholder="e.g. 25 KVA DG" />
@@ -557,29 +845,174 @@
     </div>
   </div>
 
+  <!-- Print Options Modal -->
+  <div id="printOptionsModal" class="no-print custom-modal-backdrop" style="display:none; align-items:flex-end;" onclick="closePrintOptionsModal(event)">
+    <div style="background:white; border-top-left-radius:28px; border-top-right-radius:28px; padding:24px; width:100%; max-width:600px;" onclick="event.stopPropagation()">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+        <h3 style="color: var(--md-sys-color-on-surface); font-size: 18px;"><i class="fa fa-print" style="color:var(--md-sys-color-primary);"></i> Export / Print Register</h3>
+        <button onclick="closePrintOptionsModal()" style="background:none; border:none; font-size:18px; color:var(--md-sys-color-outline); cursor:pointer;"><i class="fa fa-times"></i></button>
+      </div>
+      <button class="print-option-btn" onclick="executeNativePrint()" style="width:100%; padding:14px; margin-bottom:10px; border:1px solid var(--md-sys-color-outline); border-radius:12px; background:#f4fbfb; font-weight:600; display:flex; align-items:center; gap:12px; cursor:pointer;">
+        <i class="fa fa-file-pdf" style="color:#b3261e; font-size:20px;"></i>
+        <div style="text-align:left;">
+          <div style="font-weight:700;">Print / Save as Official PDF</div>
+          <div style="font-size:12px; color:var(--md-sys-color-outline);">Direct Landscape table format preview & download</div>
+        </div>
+      </button>
+      <button type="button" class="btn-cancel" onclick="closePrintOptionsModal()">Cancel</button>
+    </div>
+  </div>
+
+  <!-- CUSTOM M3 DIALOG (Replaces Browser Alerts & Confirms without URL) -->
+  <div id="customDialog" class="custom-dialog-backdrop">
+    <div class="custom-dialog-box">
+      <div class="custom-dialog-icon" id="dialogIcon"><i class="fa fa-info-circle"></i></div>
+      <div class="custom-dialog-title" id="dialogTitle">Notice</div>
+      <div class="custom-dialog-message" id="dialogMessage">Message here</div>
+      <div class="custom-dialog-actions" id="dialogActions">
+        <button type="button" class="btn-dialog-secondary" id="dialogCancelBtn" onclick="closeCustomDialog(false)">Cancel</button>
+        <button type="button" class="btn-dialog-primary" id="dialogOkBtn" onclick="closeCustomDialog(true)">OK</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROCESSING LOADER -->
+  <div id="processingLoader">
+    <div class="spinner"></div>
+    <div id="loaderText" style="font-weight: 600; font-size: 15px;">Processing...</div>
+  </div>
+
+  <!-- CALENDAR MODAL -->
+  <div id="calendarModal" class="custom-modal-backdrop no-print">
+    <div class="custom-picker-box">
+      <div class="custom-picker-header">
+        <div class="sub-title" id="calHeaderYear">2026</div>
+        <div class="main-title" id="calHeaderFullDate">Mon, 2 Nov</div>
+      </div>
+      <div class="custom-picker-body">
+        <div class="cal-nav">
+          <button type="button" onclick="changeCalMonth(-1)"><i class="fa fa-chevron-left"></i></button>
+          <span id="calMonthYearTitle">November 2026</span>
+          <button type="button" onclick="changeCalMonth(1)"><i class="fa fa-chevron-right"></i></button>
+        </div>
+        <div class="cal-weekdays">
+          <span>S</span><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span>
+        </div>
+        <div class="cal-days" id="calDaysGrid"></div>
+      </div>
+      <div class="picker-actions">
+        <button type="button" onclick="closeInAppCalendar()">CANCEL</button>
+        <button type="button" onclick="applyInAppCalendar()">SET</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CLOCK MODAL -->
+  <div id="clockModal" class="custom-modal-backdrop no-print">
+    <div class="custom-picker-box">
+      <div class="custom-picker-header">
+        <div class="sub-title">SELECT TIME</div>
+        <div class="main-title" id="clockHeaderTime">08:00 AM</div>
+      </div>
+      <div class="custom-picker-body">
+        <div class="clock-dial-container" id="clockDial">
+          <div class="clock-hand" id="clockHand"></div>
+        </div>
+        <div class="ampm-switch">
+          <button type="button" id="btnAM" class="ampm-btn active" onclick="setClockAMPM('AM')">AM</button>
+          <button type="button" id="btnPM" class="ampm-btn" onclick="setClockAMPM('PM')">PM</button>
+        </div>
+      </div>
+      <div class="picker-actions">
+        <button type="button" onclick="closeInAppClock()">CANCEL</button>
+        <button type="button" onclick="applyInAppClock()">SET</button>
+      </div>
+    </div>
+  </div>
+
   <script>
-    let appData = JSON.parse(localStorage.getItem('machineryRegisterData')) || {
-      savedRemarks: ["Routine Operation", "Site Excavation", "Material Transport", "Idle due to Rain"],
-      machines: {
-        "63 KVA DG": {
-          siteName: "VIP Spur Site Dilkusha",
-          months: {}
-        }
+    // Custom Dialog Replacement for Native Alerts/Confirms
+    let dialogCallback = null;
+
+    function showCustomDialog(title, message, iconClass, showCancel, callback, okText="OK", cancelText="Cancel") {
+      document.getElementById('dialogTitle').innerText = title;
+      document.getElementById('dialogMessage').innerText = message;
+      document.getElementById('dialogIcon').innerHTML = `<i class="${iconClass || 'fa fa-info-circle'}"></i>`;
+      
+      const cancelBtn = document.getElementById('dialogCancelBtn');
+      const okBtn = document.getElementById('dialogOkBtn');
+      
+      cancelBtn.innerText = cancelText;
+      okBtn.innerText = okText;
+      cancelBtn.style.display = showCancel ? 'block' : 'none';
+      
+      dialogCallback = callback;
+      document.getElementById('customDialog').style.display = 'flex';
+    }
+
+    function closeCustomDialog(result) {
+      document.getElementById('customDialog').style.display = 'none';
+      if (dialogCallback) {
+        dialogCallback(result);
+        dialogCallback = null;
       }
-    };
+    }
+
+    function showLoader(text) {
+      document.getElementById('loaderText').innerText = text || "Processing...";
+      document.getElementById('processingLoader').style.display = 'flex';
+    }
+
+    function hideLoader() {
+      document.getElementById('processingLoader').style.display = 'none';
+    }
+
+    function openPrintOptionsModal() { document.getElementById('printOptionsModal').style.display = 'flex'; }
+    function closePrintOptionsModal() { document.getElementById('printOptionsModal').style.display = 'none'; }
+
+    function executeNativePrint() {
+      closePrintOptionsModal();
+      try {
+        if (typeof AndroidBridge !== 'undefined' && AndroidBridge.printPage) {
+          AndroidBridge.printPage();
+        } else {
+          window.print();
+        }
+      } catch (err) {
+        showCustomDialog("Error", "Print karne mein samasya aayi.", "fa fa-triangle-exclamation", false, null);
+      }
+    }
+
+    let appData;
+    try {
+      appData = JSON.parse(localStorage.getItem('machineryRegisterData')) || {
+        savedRemarks: ["Routine Operation", "Site Excavation", "Material Transport", "Idle due to Rain"],
+        machines: {
+          "63 KVA DG": { siteName: "VIP Spur Site Dilkusha", months: {} }
+        }
+      };
+    } catch (err) {
+      appData = {
+        savedRemarks: ["Routine Operation", "Site Excavation", "Material Transport", "Idle due to Rain"],
+        machines: { "63 KVA DG": { siteName: "VIP Spur Site Dilkusha", months: {} } }
+      };
+    }
 
     let currentMachine = Object.keys(appData.machines)[0] || "63 KVA DG";
     let currentMonthId = null;
-    let machineModalMode = 'add'; // 'add' or 'edit'
+    let machineModalMode = 'add';
 
     function initApp() {
       renderMachineDropdown();
-      updateRemarkSuggestions();
       renderHome();
     }
 
     function saveAppData() {
-      localStorage.setItem('machineryRegisterData', JSON.stringify(appData));
+      try {
+        localStorage.setItem('machineryRegisterData', JSON.stringify(appData));
+      } catch (err) {
+        showCustomDialog("Storage Error", "Data save karne mein samasya aayi.", "fa fa-triangle-exclamation", false, null);
+      }
     }
 
     function renderMachineDropdown() {
@@ -599,7 +1032,6 @@
       renderHome();
     }
 
-    // Custom Professional Machine Modal Handlers
     function openAddMachineModal() {
       machineModalMode = 'add';
       document.getElementById('machineModalTitle').innerText = "Add New Machine";
@@ -616,40 +1048,22 @@
       document.getElementById('machineModal').style.display = 'flex';
     }
 
-    function closeMachineModal() {
-      document.getElementById('machineModal').style.display = 'none';
-    }
+    function closeMachineModal() { document.getElementById('machineModal').style.display = 'none'; }
 
     function submitMachineModal() {
       const mName = document.getElementById('modalMachineName').value.trim();
       const sName = document.getElementById('modalSiteName').value.trim();
 
-      if (!mName) {
-        alert("Kripya machine ka naam daalein!");
-        return;
-      }
-      if (!sName) {
-        alert("Kripya site ka naam daalein!");
-        return;
-      }
+      if (!mName) { showCustomDialog("Required", "Kripya machine ka naam daalein!", "fa fa-circle-exclamation", false, null); return; }
+      if (!sName) { showCustomDialog("Required", "Kripya site ka naam daalein!", "fa fa-circle-exclamation", false, null); return; }
 
       if (machineModalMode === 'add') {
-        if (appData.machines[mName]) {
-          alert("Yeh machine pehle se maujood hai!");
-          return;
-        }
-        appData.machines[mName] = {
-          siteName: sName,
-          months: {}
-        };
+        if (appData.machines[mName]) { showCustomDialog("Exists", "Yeh machine pehle se maujood hai!", "fa fa-circle-exclamation", false, null); return; }
+        appData.machines[mName] = { siteName: sName, months: {} };
         currentMachine = mName;
       } else {
-        // Edit mode
         if (mName !== currentMachine) {
-          if (appData.machines[mName]) {
-            alert("Yeh machine naam pehle se maujood hai!");
-            return;
-          }
+          if (appData.machines[mName]) { showCustomDialog("Exists", "Yeh machine naam pehle se maujood hai!", "fa fa-circle-exclamation", false, null); return; }
           appData.machines[mName] = appData.machines[currentMachine];
           delete appData.machines[currentMachine];
           currentMachine = mName;
@@ -660,22 +1074,159 @@
       saveAppData();
       closeMachineModal();
       renderMachineDropdown();
-      if (currentMonthId) {
-        openMonthRegister(currentMonthId);
-      } else {
-        renderHome();
+      if (currentMonthId) openMonthRegister(currentMonthId);
+      else renderHome();
+    }
+
+    // Calendar Logic
+    const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    const monthShort = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    const dayShortNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    let tempCalYear, tempCalMonth, tempCalDay;
+
+    function openInAppCalendar() {
+      let curVal = document.getElementById('inputDate').value;
+      let d = curVal ? new Date(curVal) : new Date();
+      tempCalYear = d.getFullYear();
+      tempCalMonth = d.getMonth();
+      tempCalDay = d.getDate();
+      renderCalendarGrid();
+      document.getElementById('calendarModal').style.display = 'flex';
+    }
+
+    function renderCalendarGrid() {
+      document.getElementById('calHeaderYear').innerText = tempCalYear;
+      let dateObj = new Date(tempCalYear, tempCalMonth, tempCalDay);
+      document.getElementById('calHeaderFullDate').innerText = `${dayShortNames[dateObj.getDay()]}, ${tempCalDay} ${monthShort[tempCalMonth]}`;
+      document.getElementById('calMonthYearTitle').innerText = `${monthNames[tempCalMonth]} ${tempCalYear}`;
+
+      const grid = document.getElementById('calDaysGrid');
+      grid.innerHTML = '';
+      let firstDay = new Date(tempCalYear, tempCalMonth, 1).getDay();
+      let totalDays = new Date(tempCalYear, tempCalMonth + 1, 0).getDate();
+
+      for (let i = 0; i < firstDay; i++) {
+        let cell = document.createElement('div');
+        cell.className = 'cal-day-cell empty';
+        grid.appendChild(cell);
+      }
+      for (let day = 1; day <= totalDays; day++) {
+        let cell = document.createElement('div');
+        cell.className = 'cal-day-cell' + (day === tempCalDay ? ' selected' : '');
+        cell.innerText = day;
+        cell.onclick = () => { tempCalDay = day; renderCalendarGrid(); };
+        grid.appendChild(cell);
       }
     }
 
-    function updateRemarkSuggestions() {
-      const datalist = document.getElementById('remarkSuggestions');
-      datalist.innerHTML = '';
-      (appData.savedRemarks || []).forEach(rem => {
-        const opt = document.createElement('option');
-        opt.value = rem;
-        datalist.appendChild(opt);
-      });
+    function changeCalMonth(offset) {
+      tempCalMonth += offset;
+      if (tempCalMonth < 0) { tempCalMonth = 11; tempCalYear--; }
+      else if (tempCalMonth > 11) { tempCalMonth = 0; tempCalYear++; }
+      let maxDays = new Date(tempCalYear, tempCalMonth + 1, 0).getDate();
+      if (tempCalDay > maxDays) tempCalDay = maxDays;
+      renderCalendarGrid();
     }
+
+    function applyInAppCalendar() {
+      let monthStr = String(tempCalMonth + 1).padStart(2, '0');
+      let dayStr = String(tempCalDay).padStart(2, '0');
+      document.getElementById('inputDate').value = `${tempCalYear}-${monthStr}-${dayStr}`;
+      document.getElementById('displayDateInput').value = `${dayStr} ${monthShort[tempCalMonth]} ${tempCalYear}`;
+      closeInAppCalendar();
+    }
+
+    function closeInAppCalendar() { document.getElementById('calendarModal').style.display = 'none'; }
+
+    // Clock Logic
+    let tempTargetTimeType = 'opp';
+    let tempClockHour = 8;
+    let tempClockAMPM = 'AM';
+
+    function openInAppClock(type) {
+      tempTargetTimeType = type;
+      let val = document.getElementById(type === 'opp' ? 'inputOpp' : 'inputClosing').value || '08:00';
+      let [h24] = val.split(':').map(Number);
+      tempClockAMPM = h24 >= 12 ? 'PM' : 'AM';
+      tempClockHour = h24 % 12 || 12;
+      renderClockDial();
+      document.getElementById('clockModal').style.display = 'flex';
+    }
+
+    function renderClockDial() {
+      document.getElementById('clockHeaderTime').innerText = `${String(tempClockHour).padStart(2, '0')}:00 ${tempClockAMPM}`;
+      document.getElementById('btnAM').className = 'ampm-btn' + (tempClockAMPM === 'AM' ? ' active' : '');
+      document.getElementById('btnPM').className = 'ampm-btn' + (tempClockAMPM === 'PM' ? ' active' : '');
+
+      const dial = document.getElementById('clockDial');
+      dial.querySelectorAll('.clock-number').forEach(n => n.remove());
+
+      const radius = 75, centerX = 85, centerY = 85;
+      for (let i = 1; i <= 12; i++) {
+        let angle = (i * 30 - 90) * (Math.PI / 180);
+        let x = centerX + radius * Math.cos(angle);
+        let y = centerY + radius * Math.sin(angle);
+        let numDiv = document.createElement('div');
+        numDiv.className = 'clock-number' + (i === tempClockHour ? ' active' : '');
+        numDiv.innerText = i;
+        numDiv.style.left = `${x}px`;
+        numDiv.style.top = `${y}px`;
+        numDiv.onclick = () => { tempClockHour = i; renderClockDial(); };
+        dial.appendChild(numDiv);
+      }
+      document.getElementById('clockHand').style.transform = `rotate(${tempClockHour * 30}deg)`;
+    }
+
+    function setClockAMPM(ampm) { tempClockAMPM = ampm; renderClockDial(); }
+
+    function applyInAppClock() {
+      let h24 = tempClockHour;
+      if (tempClockAMPM === 'PM' && h24 < 12) h24 += 12;
+      if (tempClockAMPM === 'AM' && h24 === 12) h24 = 0;
+      let time24 = `${String(h24).padStart(2, '0')}:00`;
+      let hiddenId = tempTargetTimeType === 'opp' ? 'inputOpp' : 'inputClosing';
+      let displayId = tempTargetTimeType === 'opp' ? 'displayOppInput' : 'displayClosingInput';
+      document.getElementById(hiddenId).value = time24;
+      document.getElementById(displayId).value = formatTimeTo12Hr(time24);
+      autoCalculateHours();
+      closeInAppClock();
+    }
+
+    function closeInAppClock() { document.getElementById('clockModal').style.display = 'none'; }
+
+    // Smart Remark Dropdown placed Upwards
+    function showRemarkDropdown() {
+      const dropdown = document.getElementById('customRemarkDropdown');
+      dropdown.innerHTML = '';
+      const remarks = appData.savedRemarks || [];
+      if (remarks.length === 0) { dropdown.style.display = 'none'; return; }
+
+      remarks.forEach(rem => {
+        const item = document.createElement('div');
+        item.className = 'custom-remark-item';
+        item.innerText = rem;
+        item.onmousedown = (e) => {
+          e.preventDefault();
+          document.getElementById('inputRemark').value = rem;
+          dropdown.style.display = 'none';
+        };
+        dropdown.appendChild(item);
+      });
+      dropdown.style.display = 'block';
+    }
+
+    function toggleRemarkDropdown(e) {
+      e.stopPropagation();
+      const dropdown = document.getElementById('customRemarkDropdown');
+      dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+      if (dropdown.style.display === 'block') showRemarkDropdown();
+    }
+
+    document.addEventListener('click', function(e) {
+      const dropdown = document.getElementById('customRemarkDropdown');
+      const remarkGroup = document.getElementById('inputRemark').parentNode;
+      if (dropdown && !remarkGroup.contains(e.target)) dropdown.style.display = 'none';
+    });
 
     function formatTimeTo12Hr(time24) {
       if (!time24) return '';
@@ -689,24 +1240,13 @@
       const opp = document.getElementById('inputOpp').value;
       const closing = document.getElementById('inputClosing').value;
       const hoursInput = document.getElementById('inputHours');
-
       if (!opp || !closing) return;
-
       let [h1, m1] = opp.split(':').map(Number);
       let [h2, m2] = closing.split(':').map(Number);
-
-      let t1 = h1 * 60 + m1;
-      let t2 = h2 * 60 + m2;
-
-      if (t2 < t1) {
-        t2 += 24 * 60;
-      }
-
+      let t1 = h1 * 60 + m1, t2 = h2 * 60 + m2;
+      if (t2 < t1) t2 += 24 * 60;
       const diff = t2 - t1;
-      const hours = Math.floor(diff / 60);
-      const minutes = diff % 60;
-
-      hoursInput.value = minutes > 0 ? `${hours}h ${minutes}m` : `${hours}h`;
+      hoursInput.value = (diff % 60) > 0 ? `${Math.floor(diff/60)}h ${diff%60}m` : `${Math.floor(diff/60)}h`;
     }
 
     function renderHome() {
@@ -721,9 +1261,7 @@
 
       const monthKeys = Object.keys(machineData.months || {}).sort().reverse();
       const currDateStr = new Date().toISOString().slice(0, 7);
-      if (!monthKeys.includes(currDateStr)) {
-        monthKeys.unshift(currDateStr);
-      }
+      if (!monthKeys.includes(currDateStr)) monthKeys.unshift(currDateStr);
 
       if (monthKeys.length === 0) {
         empty.style.display = 'block';
@@ -731,9 +1269,7 @@
         empty.style.display = 'none';
         monthKeys.forEach(mId => {
           const [year, month] = mId.split('-');
-          const dateObj = new Date(year, month - 1);
-          const monthName = dateObj.toLocaleString('default', { month: 'long', year: 'numeric' });
-          
+          const monthName = new Date(year, month - 1).toLocaleString('default', { month: 'long', year: 'numeric' });
           const entries = (machineData.months[mId] && machineData.months[mId].entries) || [];
           const totalDiesel = entries.reduce((sum, e) => sum + (parseFloat(e.diesel) || 0), 0);
 
@@ -770,31 +1306,35 @@
       preparePrintTable();
     }
 
-    function goHome() {
-      currentMonthId = null;
-      renderHome();
+    function goHome() { currentMonthId = null; renderHome(); }
+
+    function getSortedEntries(entriesList) {
+      return entriesList.slice().sort((a, b) => {
+        const dateDiff = new Date(a.date) - new Date(b.date);
+        if (dateDiff !== 0) return dateDiff;
+        return (a.opp || "00:00").localeCompare(b.opp || "00:00");
+      });
     }
 
     function renderCardEntries() {
       const machineData = appData.machines[currentMachine];
       const monthObj = machineData.months[currentMonthId] || { entries: [] };
-      const entries = monthObj.entries || [];
+      const rawEntries = monthObj.entries || [];
       const cardListContainer = document.getElementById('entriesCardList');
       cardListContainer.innerHTML = '';
+      const entries = getSortedEntries(rawEntries);
 
-      entries.sort((a, b) => new Date(a.date) - new Date(b.date));
-
-      let totalDiesel = 0;
-      let totalHoursNum = 0;
-
+      let totalDiesel = 0, totalHoursNum = 0;
       if (entries.length === 0) {
-        cardListContainer.innerHTML = `<div style="text-align:center; padding:30px; color:#64748b;">No entries for this month. Tap '+' to add.</div>`;
+        cardListContainer.innerHTML = `<div style="text-align:center; padding:30px; color:var(--md-sys-color-outline);">No entries for this month. Tap '+' to add.</div>`;
       }
 
-      entries.forEach((e, idx) => {
+      entries.forEach((e) => {
+        const originalIndex = rawEntries.indexOf(e);
         totalDiesel += parseFloat(e.diesel) || 0;
-        let hVal = parseFloat(e.hours);
-        if (!isNaN(hVal)) totalHoursNum += hVal;
+        let hParts = (e.hours || "").match(/(\d+)h/);
+        let mParts = (e.hours || "").match(/(\d+)m/);
+        totalHoursNum += (hParts ? parseFloat(hParts[1]) : 0) + (mParts ? parseFloat(mParts[1])/60 : 0);
 
         const parts = e.date.split('-');
         const formattedDate = parts.length === 3 ? `${parts[2]}-${parts[1]}-${parts[0]}` : e.date;
@@ -804,7 +1344,7 @@
         card.innerHTML = `
           <div class="entry-card-header">
             <span>📅 ${formattedDate}</span>
-            <span style="color:#2563eb;">⛽ ${e.diesel} Ltr</span>
+            <span style="color:var(--md-sys-color-primary);">⛽ ${e.diesel} Ltr</span>
           </div>
           <div class="entry-card-body">
             <span>Opening: <strong>${formatTimeTo12Hr(e.opp)}</strong></span>
@@ -815,62 +1355,38 @@
           </div>
           <div class="entry-hint">Double Tap to Edit | Hold to Delete</div>
         `;
-
-        card.ondblclick = () => openEntryModal(idx);
+        card.ondblclick = () => openEntryModal(originalIndex);
 
         let pressTimer;
-        card.addEventListener('touchstart', () => {
-          pressTimer = setTimeout(() => {
-            deleteEntry(idx);
-          }, 700);
-        });
-        card.addEventListener('touchend', () => {
-          clearTimeout(pressTimer);
-        });
-
+        card.addEventListener('touchstart', () => { pressTimer = setTimeout(() => deleteEntry(originalIndex), 700); });
+        card.addEventListener('touchend', () => clearTimeout(pressTimer));
         cardListContainer.appendChild(card);
       });
 
-      document.getElementById('sumDiesel').innerText = totalDiesel + ' Ltr';
-      document.getElementById('sumHours').innerText = totalHoursNum + ' h';
       document.getElementById('sumEntries').innerText = entries.length;
+      document.getElementById('sumDiesel').innerText = totalDiesel + ' Ltr';
+      document.getElementById('sumHours').innerText = totalHoursNum.toFixed(1) + ' h';
+      document.getElementById('sumAvgDiesel').innerText = (totalHoursNum > 0 ? (totalDiesel / totalHoursNum).toFixed(2) : "0.00") + ' Ltr/h';
     }
 
     function preparePrintTable() {
       const machineData = appData.machines[currentMachine];
       const monthObj = machineData.months[currentMonthId] || { entries: [] };
-      const entries = monthObj.entries || [];
+      const rawEntries = monthObj.entries || [];
       const printTbody = document.getElementById('printTableBody');
       printTbody.innerHTML = '';
-
-      entries.sort((a, b) => new Date(a.date) - new Date(b.date));
+      const entries = getSortedEntries(rawEntries);
 
       entries.forEach((e) => {
         const parts = e.date.split('-');
         const formattedDate = parts.length === 3 ? `${parts[2]}-${parts[1]}-${parts[0]}` : e.date;
-
         const tr = document.createElement('tr');
-        tr.innerHTML = `
-          <td>${formattedDate}</td>
-          <td>${formatTimeTo12Hr(e.opp)}</td>
-          <td>${formatTimeTo12Hr(e.closing)}</td>
-          <td>${e.hours}</td>
-          <td>${e.diesel} L</td>
-          <td></td>
-          <td>${e.idle || '-'}</td>
-          <td style="text-align: left; padding-left: 6px;">${e.remark || '-'}</td>
-          <td></td>
-          <td></td>
-        `;
+        tr.innerHTML = `<td>${formattedDate}</td><td>${formatTimeTo12Hr(e.opp)}</td><td>${formatTimeTo12Hr(e.closing)}</td><td>${e.hours}</td><td>${e.diesel} L</td><td></td><td>${e.idle || '-'}</td><td style="text-align: left; padding-left: 6px;">${e.remark || '-'}</td><td></td><td></td>`;
         printTbody.appendChild(tr);
       });
-
-      const totalRowsToDisplay = Math.max(entries.length, 31);
-      for (let i = entries.length; i < totalRowsToDisplay; i++) {
+      for (let i = entries.length; i < Math.max(entries.length, 31); i++) {
         const tr = document.createElement('tr');
-        tr.innerHTML = `
-          <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-        `;
+        tr.innerHTML = `<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>`;
         printTbody.appendChild(tr);
       }
     }
@@ -879,23 +1395,32 @@
       document.getElementById('editIndex').value = index;
       document.getElementById('overlay').style.display = 'block';
       document.getElementById('addForm').classList.add('show');
+      document.getElementById('customRemarkDropdown').style.display = 'none';
 
       if (index === -1) {
         document.getElementById('formTitle').innerText = "Add Daily Entry";
-        document.getElementById('inputDate').valueAsDate = new Date();
+        let now = new Date();
+        let y = now.getFullYear(), m = String(now.getMonth() + 1).padStart(2, '0'), d = String(now.getDate()).padStart(2, '0');
+        document.getElementById('inputDate').value = `${y}-${m}-${d}`;
+        document.getElementById('displayDateInput').value = `${d} ${monthShort[now.getMonth()]} ${y}`;
         document.getElementById('inputOpp').value = '08:00';
+        document.getElementById('displayOppInput').value = '08:00 AM';
         document.getElementById('inputClosing').value = '18:00';
+        document.getElementById('displayClosingInput').value = '06:00 PM';
         autoCalculateHours();
         document.getElementById('inputDiesel').value = '';
         document.getElementById('inputIdle').value = '';
         document.getElementById('inputRemark').value = '';
       } else {
         document.getElementById('formTitle').innerText = "Edit Entry";
-        const machineData = appData.machines[currentMachine];
-        const item = machineData.months[currentMonthId].entries[index];
+        const item = appData.machines[currentMachine].months[currentMonthId].entries[index];
         document.getElementById('inputDate').value = item.date;
+        let dParts = item.date.split('-');
+        document.getElementById('displayDateInput').value = dParts.length === 3 ? `${dParts[2]} ${monthShort[parseInt(dParts[1])-1]} ${dParts[0]}` : item.date;
         document.getElementById('inputOpp').value = item.opp;
+        document.getElementById('displayOppInput').value = formatTimeTo12Hr(item.opp);
         document.getElementById('inputClosing').value = item.closing;
+        document.getElementById('displayClosingInput').value = formatTimeTo12Hr(item.closing);
         document.getElementById('inputHours').value = item.hours;
         document.getElementById('inputDiesel').value = item.diesel;
         document.getElementById('inputIdle').value = item.idle;
@@ -912,23 +1437,13 @@
       e.preventDefault();
       const index = parseInt(document.getElementById('editIndex').value);
       const dateVal = document.getElementById('inputDate').value;
-      const calculatedMonthId = dateVal.slice(0, 7);
-
-      if (!currentMonthId) {
-        currentMonthId = calculatedMonthId;
-      }
+      if (!currentMonthId) currentMonthId = dateVal.slice(0, 7);
 
       const machineData = appData.machines[currentMachine];
-      if (!machineData.months[currentMonthId]) {
-        machineData.months[currentMonthId] = { entries: [] };
-      }
+      if (!machineData.months[currentMonthId]) machineData.months[currentMonthId] = { entries: [] };
 
       const remarkVal = document.getElementById('inputRemark').value.trim() || '-';
-      
-      if (remarkVal !== '-' && !appData.savedRemarks.includes(remarkVal)) {
-        appData.savedRemarks.push(remarkVal);
-        updateRemarkSuggestions();
-      }
+      if (remarkVal !== '-' && !appData.savedRemarks.includes(remarkVal)) appData.savedRemarks.push(remarkVal);
 
       const entryObj = {
         date: dateVal,
@@ -940,61 +1455,105 @@
         remark: remarkVal
       };
 
-      const entries = machineData.months[currentMonthId].entries;
-      if (index === -1) {
-        entries.push(entryObj);
-      } else {
-        entries[index] = entryObj;
-      }
+      if (index === -1) machineData.months[currentMonthId].entries.push(entryObj);
+      else machineData.months[currentMonthId].entries[index] = entryObj;
 
       saveAppData();
       hideForm();
-      if (document.getElementById('monthDetailView').style.display === 'block') {
-        openMonthRegister(currentMonthId);
-      } else {
-        renderHome();
-      }
+      if (document.getElementById('monthDetailView').style.display === 'block') openMonthRegister(currentMonthId);
+      else renderHome();
     }
 
     function deleteEntry(index) {
-      if (confirm("Kya aap is entry ko delete karna chahte hain?")) {
-        const machineData = appData.machines[currentMachine];
-        machineData.months[currentMonthId].entries.splice(index, 1);
-        saveAppData();
-        openMonthRegister(currentMonthId);
-      }
+      showCustomDialog("Delete Entry", "Kya aap is entry ko delete karna chahte hain?", "fa fa-trash-can", true, (res) => {
+        if (res) {
+          appData.machines[currentMachine].months[currentMonthId].entries.splice(index, 1);
+          saveAppData();
+          openMonthRegister(currentMonthId);
+        }
+      }, "Delete", "Cancel");
     }
 
+    // Live Tracking & Error Handled Export Data with Path Tracker
     function exportData() {
-      const dataStr = JSON.stringify(appData, null, 2);
-      const blob = new Blob([dataStr], { type: 'application/json' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = `machinery_register_backup_${new Date().toISOString().split('T')[0]}.json`;
-      a.click();
+      showLoader("Preparing backup export...");
+      setTimeout(() => {
+        try {
+          console.log("[Export] Serializing application data...");
+          const dataStr = JSON.stringify(appData, null, 2);
+          
+          const base64Data = btoa(unescape(encodeURIComponent(dataStr)));
+          const dataUri = `data:application/json;base64,${base64Data}`;
+
+          const fileName = `machinery_register_backup_${new Date().toISOString().split('T')[0]}.json`;
+          console.log("[Export] Target file name: " + fileName);
+          console.log("[Export] Destination Path / Folder: Phone Storage -> Download / Downloads Folder");
+
+          const a = document.createElement('a');
+          a.href = dataUri;
+          a.download = fileName;
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+
+          hideLoader();
+          // Success popup with path info and NO URL displayed
+          showCustomDialog(
+            "Export Successful", 
+            "Backup file successfully download folder me save ho gayi hai!\n\nPath / Location:\nInternal Storage/Download/" + fileName, 
+            "fa fa-circle-check", 
+            false, 
+            null
+          );
+        } catch (err) {
+          hideLoader();
+          console.error("[Export Error]: ", err);
+          showCustomDialog("Export Error", "Data export karne mein samasya aayi.\nError details: " + err.message, "fa fa-triangle-exclamation", false, null);
+        }
+      }, 500);
     }
 
+    // Live Tracking & Error Handled Import Data
     function importData() {
       const input = document.createElement('input');
       input.type = 'file';
       input.accept = '.json';
       input.onchange = e => {
         const file = e.target.files[0];
+        if (!file) return;
+
+        console.log("[Import] Selected file name: " + file.name);
+        console.log("[Import] File size: " + file.size + " bytes");
+        showLoader("Restoring backup data from storage...");
+
         const reader = new FileReader();
         reader.onload = event => {
-          try {
-            const imported = JSON.parse(event.target.result);
-            if (imported.machines) {
-              appData = imported;
-              saveAppData();
-              currentMachine = Object.keys(appData.machines)[0];
-              initApp();
-              alert("Data successfully restore ho gaya hai!");
+          setTimeout(() => {
+            hideLoader();
+            try {
+              console.log("[Import] Parsing JSON file content...");
+              const imported = JSON.parse(event.target.result);
+              if (imported.machines) {
+                appData = imported;
+                saveAppData();
+                currentMachine = Object.keys(appData.machines)[0];
+                initApp();
+                console.log("[Import] Restore completed successfully.");
+                showCustomDialog("Restore Success", "Data successfully restore ho gaya hai!", "fa fa-circle-check", false, null);
+              } else {
+                console.warn("[Import Warning] Invalid JSON structure format.");
+                showCustomDialog("Invalid Format", "Backup file ka format sahi nahi hai.", "fa fa-triangle-exclamation", false, null);
+              }
+            } catch (err) {
+              console.error("[Import Error]: ", err);
+              showCustomDialog("Restore Error", "Backup file invalid ya corrupt hai!\nError: " + err.message, "fa fa-triangle-exclamation", false, null);
             }
-          } catch (err) {
-            alert("Backup file invalid hai!");
-          }
+          }, 600);
+        };
+        reader.onerror = (err) => {
+          hideLoader();
+          console.error("[FileReader Error]: ", err);
+          showCustomDialog("Read Error", "File read karne me error aayi.", "fa fa-triangle-exclamation", false, null);
         };
         reader.readAsText(file);
       };
