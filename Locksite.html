@@ -1,1 +1,1007 @@
-Machine 
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <title>Machinery & Diesel Register Pro</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background: #f1f5f9;
+      color: #0f172a;
+      padding-bottom: 90px;
+    }
+
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: #0f172a;
+      color: white;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .header-title {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 0.4px;
+    }
+
+    .header-icon {
+      background: rgba(255, 255, 255, 0.15);
+      border: none;
+      border-radius: 50%;
+      color: white;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .header-icon:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: scale(1.05);
+    }
+
+    /* Machine Selector Bar */
+    .machine-bar {
+      background: #1e293b;
+      color: white;
+      padding: 10px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 14px;
+      border-bottom: 1px solid #334155;
+    }
+
+    .machine-bar select {
+      background: #334155;
+      color: white;
+      border: none;
+      padding: 6px 10px;
+      border-radius: 8px;
+      font-weight: bold;
+      outline: none;
+      max-width: 170px;
+    }
+
+    .add-machine-btn {
+      background: #2563eb;
+      color: white;
+      border: none;
+      padding: 6px 10px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .container {
+      padding: 14px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .month-item {
+      padding: 16px;
+      background: white;
+      margin-bottom: 12px;
+      border-radius: 14px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border: 1px solid #e2e8f0;
+    }
+
+    .month-item:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 14px rgba(0, 0, 0, 0.08);
+      border-color: #2563eb;
+    }
+
+    .month-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .month-title {
+      font-weight: 700;
+      font-size: 16px;
+      color: #0f172a;
+    }
+
+    .month-sub {
+      font-size: 12px;
+      color: #64748b;
+      margin-top: 3px;
+    }
+
+    .month-badge {
+      font-weight: 700;
+      color: #2563eb;
+      background: #eff6ff;
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 13px;
+    }
+
+    /* Entry Cards Layout inside Month View */
+    .entries-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .entry-card {
+      background: white;
+      border-radius: 12px;
+      padding: 14px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+      border: 1px solid #e2e8f0;
+      position: relative;
+      user-select: none;
+    }
+
+    .entry-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 700;
+      font-size: 14px;
+      color: #1e293b;
+      border-bottom: 1px solid #f1f5f9;
+      padding-bottom: 6px;
+      margin-bottom: 8px;
+    }
+
+    .entry-card-body {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 6px;
+      font-size: 12px;
+      color: #475569;
+    }
+
+    .entry-card-body span strong {
+      color: #0f172a;
+    }
+
+    .entry-hint {
+      font-size: 10px;
+      color: #94a3b8;
+      text-align: right;
+      margin-top: 6px;
+    }
+
+    /* Summary Bar */
+    .summary-row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+    }
+
+    .summary-card {
+      flex: 1;
+      min-width: 120px;
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 12px;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.04);
+    }
+
+    .summary-card .label {
+      font-size: 11px;
+      font-weight: 600;
+      color: #64748b;
+      text-transform: uppercase;
+    }
+
+    .summary-card .value {
+      font-size: 15px;
+      font-weight: 700;
+      margin-top: 4px;
+      color: #0f172a;
+    }
+
+    /* Floating Action Button */
+    #addBtn {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: #2563eb;
+      color: white;
+      border: none;
+      font-size: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 16px rgba(37, 99, 235, 0.4);
+      cursor: pointer;
+      z-index: 100;
+      transition: transform 0.2s;
+    }
+
+    #addBtn:active { transform: scale(0.92); }
+
+    /* Bottom Sheet Form & Modals */
+    #overlay {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      display: none;
+      z-index: 200;
+      backdrop-filter: blur(2px);
+    }
+
+    #addForm {
+      position: fixed;
+      left: 0; bottom: -100%;
+      width: 100%;
+      background: white;
+      border-top-left-radius: 24px;
+      border-top-right-radius: 24px;
+      padding: 24px;
+      box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.2);
+      z-index: 201;
+      transition: bottom 0.3s ease-out;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    #addForm.show { bottom: 0; }
+
+    #addForm h3 {
+      text-align: center;
+      margin-bottom: 18px;
+      color: #0f172a;
+      font-size: 18px;
+    }
+
+    .form-group {
+      margin-bottom: 12px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      color: #64748b;
+      margin-bottom: 4px;
+    }
+
+    .form-group input, .form-group select {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      font-size: 14px;
+      outline: none;
+    }
+
+    .form-group input:focus { border-color: #2563eb; }
+
+    .btn-submit {
+      width: 100%;
+      padding: 12px;
+      background: #2563eb;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 700;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+
+    .btn-cancel {
+      width: 100%;
+      padding: 12px;
+      background: #e2e8f0;
+      color: #334155;
+      border: none;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 700;
+      margin-top: 8px;
+      cursor: pointer;
+    }
+
+    /* Custom Machine Modal Style */
+    #machineModal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.5);
+      z-index: 300;
+      justify-content: center;
+      align-items: center;
+      padding: 16px;
+      backdrop-filter: blur(2px);
+    }
+
+    .machine-modal-content {
+      background: white;
+      border-radius: 20px;
+      padding: 24px;
+      width: 100%;
+      max-width: 380px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+
+    #emptyState {
+      text-align: center;
+      padding: 50px 20px;
+      color: #64748b;
+    }
+
+    #emptyState i {
+      font-size: 48px;
+      margin-bottom: 12px;
+      color: #cbd5e1;
+    }
+
+    /* Print / PDF Landscape Specific CSS */
+    .print-container { display: none; }
+
+    @media print {
+      .no-print, .header, .machine-bar, #addBtn, #overlay, #addForm, #machineModal, #homeView, #monthDetailView { display: none !important; }
+      body { background: white; padding: 0; }
+      .print-container { display: block !important; width: 100%; background: #fff; padding: 0; }
+      
+      .header-table, .data-table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      .header-table td {
+        border: 1px solid #000;
+        padding: 6px 8px;
+        font-weight: bold;
+        font-size: 11px;
+        text-transform: uppercase;
+      }
+      .data-table {
+        margin-top: -1px;
+      }
+      .data-table th, .data-table td {
+        border: 1px solid #000;
+        padding: 6px 3px;
+        text-align: center;
+        font-size: 10px;
+        height: 22px;
+      }
+      .data-table th {
+        background-color: #f1f5f9 !important;
+        -webkit-print-color-adjust: exact;
+      }
+      @page { size: landscape; margin: 6mm; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Header -->
+  <div class="header no-print">
+    <div class="header-title"><i class="fa fa-truck-monster"></i> Machinery Register</div>
+    <div style="display:flex; gap:10px; align-items:center;">
+      <button class="header-icon" onclick="exportData()" title="Export JSON"><i class="fa fa-file-export"></i></button>
+      <button class="header-icon" onclick="importData()" title="Import JSON"><i class="fa fa-file-import"></i></button>
+    </div>
+  </div>
+
+  <!-- Machine Bar & Settings -->
+  <div class="machine-bar no-print">
+    <div style="display:flex; align-items:center; gap:8px;">
+      <span>Machine:</span>
+      <select id="machineSelect" onchange="switchMachine()"></select>
+      <button class="header-icon" style="width:30px; height:30px; font-size:12px;" onclick="openMachineSettings()" title="Settings"><i class="fa fa-cog"></i></button>
+    </div>
+    <button class="add-machine-btn" onclick="openAddMachineModal()"><i class="fa fa-plus"></i> Machine</button>
+  </div>
+
+  <!-- Home View (Month List) -->
+  <div id="homeView" class="container no-print">
+    <div style="margin-bottom: 10px; font-weight: 700; color: #475569; font-size: 14px;">Select Month Register:</div>
+    <div id="monthList"></div>
+    <div id="emptyState" style="display:none;">
+      <i class="fa fa-folder-open"></i>
+      <p>No records found for this machine. Click the '+' button below to add your first entry.</p>
+    </div>
+  </div>
+
+  <!-- Month Detail View (Card List inside App) -->
+  <div id="monthDetailView" class="container no-print" style="display:none;">
+    <div style="margin-bottom: 12px; display:flex; justify-content:space-between; align-items:center;">
+      <button class="add-machine-btn" style="background:#475569;" onclick="goHome()"><i class="fa fa-arrow-left"></i> Back</button>
+      <div style="display:flex; gap:8px;">
+        <button class="add-machine-btn" style="background:#059669;" onclick="window.print()"><i class="fa fa-print"></i> Print / PDF Landscape</button>
+      </div>
+    </div>
+
+    <!-- Summary Cards -->
+    <div class="summary-row">
+      <div class="summary-card">
+        <div class="label">Total Diesel</div>
+        <div class="value" id="sumDiesel">0 Ltr</div>
+      </div>
+      <div class="summary-card">
+        <div class="label">Total Hours</div>
+        <div class="value" id="sumHours">0 h</div>
+      </div>
+      <div class="summary-card">
+        <div class="label">Total Entries</div>
+        <div class="value" id="sumEntries">0</div>
+      </div>
+    </div>
+
+    <div style="font-weight: 700; font-size: 15px; color: #1e293b; margin-bottom: 8px;" id="monthDetailHeading">Entries</div>
+    <div class="entries-grid" id="entriesCardList"></div>
+  </div>
+
+  <!-- Hidden Official Landscape PDF Register View (Only for Print) -->
+  <div class="print-container" id="printContainerSection">
+    <table class="header-table">
+      <tr>
+        <td style="width: 45%;">SITE NAME: <span id="printLblSite">-</span></td>
+        <td style="width: 35%;">MACHINERY: <span id="printLblMachine">-</span></td>
+        <td style="width: 20%;">MONTH: <span id="printLblMonth">-</span></td>
+      </tr>
+    </table>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th style="width: 7%;">DATE</th>
+          <th style="width: 9%;">OPP READING</th>
+          <th style="width: 9%;">CLOSING READING</th>
+          <th style="width: 9%;">DAILY WORKING HOURS</th>
+          <th style="width: 9%;">DIESEL ISSUE</th>
+          <th style="width: 7%;">ISSUER SIGN</th>
+          <th style="width: 7%;">IDLE / BD</th>
+          <th style="width: 26%;">REMARK (WORK DONE)</th>
+          <th style="width: 7%;">SIG. OPT.</th>
+          <th style="width: 7%;">SIGN AUTH.</th>
+        </tr>
+      </thead>
+      <tbody id="printTableBody"></tbody>
+    </table>
+  </div>
+
+  <!-- FAB Button -->
+  <button id="addBtn" class="no-print" onclick="openEntryModal(-1)"><i class="fa fa-plus"></i></button>
+
+  <!-- Overlay & Bottom Form Modal -->
+  <div id="overlay" class="no-print" onclick="hideForm()"></div>
+  <div id="addForm" class="no-print">
+    <h3 id="formTitle">Add Daily Entry</h3>
+    <form onsubmit="saveEntryData(event)">
+      <input type="hidden" id="editIndex" value="-1">
+      <div class="form-group">
+        <label>Date</label>
+        <input type="date" id="inputDate" required />
+      </div>
+
+      <!-- Time Pickers for Easy Watch Selection -->
+      <div style="display: flex; gap: 10px;">
+        <div class="form-group" style="flex: 1;">
+          <label>Opening Time 🕒</label>
+          <input type="time" id="inputOpp" onchange="autoCalculateHours()" required />
+        </div>
+        <div class="form-group" style="flex: 1;">
+          <label>Closing Time 🕒</label>
+          <input type="time" id="inputClosing" onchange="autoCalculateHours()" required />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Working Hours (Auto Calculated)</label>
+        <input type="text" id="inputHours" placeholder="Calculated automatically" readonly style="background:#f8fafc;" required />
+      </div>
+      <div class="form-group">
+        <label>Diesel Issue (Ltrs)</label>
+        <input type="number" step="any" id="inputDiesel" placeholder="e.g. 40" required />
+      </div>
+      <div class="form-group">
+        <label>Idle / Breakdown</label>
+        <input type="text" id="inputIdle" placeholder="e.g. 2h or -" />
+      </div>
+      <div class="form-group">
+        <label>Remark (Work Done) - Smart Auto Suggestion</label>
+        <input type="text" id="inputRemark" list="remarkSuggestions" placeholder="Type or select previous remark..." />
+        <datalist id="remarkSuggestions"></datalist>
+      </div>
+      <button type="submit" class="btn-submit">Save Entry</button>
+      <button type="button" class="btn-cancel" onclick="hideForm()">Cancel</button>
+    </form>
+  </div>
+
+  <!-- Custom Professional Machine Modal (Replaces browser prompt) -->
+  <div id="machineModal" class="no-print">
+    <div class="machine-modal-content">
+      <h3 id="machineModalTitle" style="margin-bottom: 16px; color: #0f172a; font-size: 18px; text-align: center;">Add Machine</h3>
+      <div class="form-group">
+        <label>Machine / Vehicle Name</label>
+        <input type="text" id="modalMachineName" placeholder="e.g. 25 KVA DG" />
+      </div>
+      <div class="form-group">
+        <label>Site Name</label>
+        <input type="text" id="modalSiteName" placeholder="e.g. VIP Spur Site" />
+      </div>
+      <button type="button" class="btn-submit" onclick="submitMachineModal()">Save</button>
+      <button type="button" class="btn-cancel" onclick="closeMachineModal()" style="margin-top: 8px;">Cancel</button>
+    </div>
+  </div>
+
+  <script>
+    let appData = JSON.parse(localStorage.getItem('machineryRegisterData')) || {
+      savedRemarks: ["Routine Operation", "Site Excavation", "Material Transport", "Idle due to Rain"],
+      machines: {
+        "63 KVA DG": {
+          siteName: "VIP Spur Site Dilkusha",
+          months: {}
+        }
+      }
+    };
+
+    let currentMachine = Object.keys(appData.machines)[0] || "63 KVA DG";
+    let currentMonthId = null;
+    let machineModalMode = 'add'; // 'add' or 'edit'
+
+    function initApp() {
+      renderMachineDropdown();
+      updateRemarkSuggestions();
+      renderHome();
+    }
+
+    function saveAppData() {
+      localStorage.setItem('machineryRegisterData', JSON.stringify(appData));
+    }
+
+    function renderMachineDropdown() {
+      const select = document.getElementById('machineSelect');
+      select.innerHTML = '';
+      Object.keys(appData.machines).forEach(m => {
+        const opt = document.createElement('option');
+        opt.value = m;
+        opt.innerText = m;
+        if (m === currentMachine) opt.selected = true;
+        select.appendChild(opt);
+      });
+    }
+
+    function switchMachine() {
+      currentMachine = document.getElementById('machineSelect').value;
+      renderHome();
+    }
+
+    // Custom Professional Machine Modal Handlers
+    function openAddMachineModal() {
+      machineModalMode = 'add';
+      document.getElementById('machineModalTitle').innerText = "Add New Machine";
+      document.getElementById('modalMachineName').value = '';
+      document.getElementById('modalSiteName').value = 'VIP Spur Site';
+      document.getElementById('machineModal').style.display = 'flex';
+    }
+
+    function openMachineSettings() {
+      machineModalMode = 'edit';
+      document.getElementById('machineModalTitle').innerText = "Edit Machine & Site";
+      document.getElementById('modalMachineName').value = currentMachine;
+      document.getElementById('modalSiteName').value = appData.machines[currentMachine].siteName;
+      document.getElementById('machineModal').style.display = 'flex';
+    }
+
+    function closeMachineModal() {
+      document.getElementById('machineModal').style.display = 'none';
+    }
+
+    function submitMachineModal() {
+      const mName = document.getElementById('modalMachineName').value.trim();
+      const sName = document.getElementById('modalSiteName').value.trim();
+
+      if (!mName) {
+        alert("Kripya machine ka naam daalein!");
+        return;
+      }
+      if (!sName) {
+        alert("Kripya site ka naam daalein!");
+        return;
+      }
+
+      if (machineModalMode === 'add') {
+        if (appData.machines[mName]) {
+          alert("Yeh machine pehle se maujood hai!");
+          return;
+        }
+        appData.machines[mName] = {
+          siteName: sName,
+          months: {}
+        };
+        currentMachine = mName;
+      } else {
+        // Edit mode
+        if (mName !== currentMachine) {
+          if (appData.machines[mName]) {
+            alert("Yeh machine naam pehle se maujood hai!");
+            return;
+          }
+          appData.machines[mName] = appData.machines[currentMachine];
+          delete appData.machines[currentMachine];
+          currentMachine = mName;
+        }
+        appData.machines[currentMachine].siteName = sName;
+      }
+
+      saveAppData();
+      closeMachineModal();
+      renderMachineDropdown();
+      if (currentMonthId) {
+        openMonthRegister(currentMonthId);
+      } else {
+        renderHome();
+      }
+    }
+
+    function updateRemarkSuggestions() {
+      const datalist = document.getElementById('remarkSuggestions');
+      datalist.innerHTML = '';
+      (appData.savedRemarks || []).forEach(rem => {
+        const opt = document.createElement('option');
+        opt.value = rem;
+        datalist.appendChild(opt);
+      });
+    }
+
+    function formatTimeTo12Hr(time24) {
+      if (!time24) return '';
+      let [h, m] = time24.split(':').map(Number);
+      let ampm = h >= 12 ? 'PM' : 'AM';
+      h = h % 12 || 12;
+      return `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')} ${ampm}`;
+    }
+
+    function autoCalculateHours() {
+      const opp = document.getElementById('inputOpp').value;
+      const closing = document.getElementById('inputClosing').value;
+      const hoursInput = document.getElementById('inputHours');
+
+      if (!opp || !closing) return;
+
+      let [h1, m1] = opp.split(':').map(Number);
+      let [h2, m2] = closing.split(':').map(Number);
+
+      let t1 = h1 * 60 + m1;
+      let t2 = h2 * 60 + m2;
+
+      if (t2 < t1) {
+        t2 += 24 * 60;
+      }
+
+      const diff = t2 - t1;
+      const hours = Math.floor(diff / 60);
+      const minutes = diff % 60;
+
+      hoursInput.value = minutes > 0 ? `${hours}h ${minutes}m` : `${hours}h`;
+    }
+
+    function renderHome() {
+      document.getElementById('homeView').style.display = 'block';
+      document.getElementById('monthDetailView').style.display = 'none';
+      document.getElementById('addBtn').style.display = 'flex';
+
+      const machineData = appData.machines[currentMachine];
+      const list = document.getElementById('monthList');
+      const empty = document.getElementById('emptyState');
+      list.innerHTML = '';
+
+      const monthKeys = Object.keys(machineData.months || {}).sort().reverse();
+      const currDateStr = new Date().toISOString().slice(0, 7);
+      if (!monthKeys.includes(currDateStr)) {
+        monthKeys.unshift(currDateStr);
+      }
+
+      if (monthKeys.length === 0) {
+        empty.style.display = 'block';
+      } else {
+        empty.style.display = 'none';
+        monthKeys.forEach(mId => {
+          const [year, month] = mId.split('-');
+          const dateObj = new Date(year, month - 1);
+          const monthName = dateObj.toLocaleString('default', { month: 'long', year: 'numeric' });
+          
+          const entries = (machineData.months[mId] && machineData.months[mId].entries) || [];
+          const totalDiesel = entries.reduce((sum, e) => sum + (parseFloat(e.diesel) || 0), 0);
+
+          const div = document.createElement('div');
+          div.className = 'month-item';
+          div.innerHTML = `
+            <div class="month-info">
+              <span class="month-title">${monthName}</span>
+              <span class="month-sub">${entries.length} Records Saved</span>
+            </div>
+            <div class="month-badge">${totalDiesel} Ltr Diesel</div>
+          `;
+          div.onclick = () => openMonthRegister(mId);
+          list.appendChild(div);
+        });
+      }
+    }
+
+    function openMonthRegister(mId) {
+      currentMonthId = mId;
+      document.getElementById('homeView').style.display = 'none';
+      document.getElementById('monthDetailView').style.display = 'block';
+
+      const machineData = appData.machines[currentMachine];
+      const [year, month] = mId.split('-');
+      const monthName = new Date(year, month - 1).toLocaleString('default', { month: 'long', year: 'numeric' });
+
+      document.getElementById('monthDetailHeading').innerText = `${monthName} - Entries`;
+      document.getElementById('printLblSite').innerText = machineData.siteName;
+      document.getElementById('printLblMachine').innerText = currentMachine;
+      document.getElementById('printLblMonth').innerText = monthName;
+
+      renderCardEntries();
+      preparePrintTable();
+    }
+
+    function goHome() {
+      currentMonthId = null;
+      renderHome();
+    }
+
+    function renderCardEntries() {
+      const machineData = appData.machines[currentMachine];
+      const monthObj = machineData.months[currentMonthId] || { entries: [] };
+      const entries = monthObj.entries || [];
+      const cardListContainer = document.getElementById('entriesCardList');
+      cardListContainer.innerHTML = '';
+
+      entries.sort((a, b) => new Date(a.date) - new Date(b.date));
+
+      let totalDiesel = 0;
+      let totalHoursNum = 0;
+
+      if (entries.length === 0) {
+        cardListContainer.innerHTML = `<div style="text-align:center; padding:30px; color:#64748b;">No entries for this month. Tap '+' to add.</div>`;
+      }
+
+      entries.forEach((e, idx) => {
+        totalDiesel += parseFloat(e.diesel) || 0;
+        let hVal = parseFloat(e.hours);
+        if (!isNaN(hVal)) totalHoursNum += hVal;
+
+        const parts = e.date.split('-');
+        const formattedDate = parts.length === 3 ? `${parts[2]}-${parts[1]}-${parts[0]}` : e.date;
+
+        const card = document.createElement('div');
+        card.className = 'entry-card';
+        card.innerHTML = `
+          <div class="entry-card-header">
+            <span>📅 ${formattedDate}</span>
+            <span style="color:#2563eb;">⛽ ${e.diesel} Ltr</span>
+          </div>
+          <div class="entry-card-body">
+            <span>Opening: <strong>${formatTimeTo12Hr(e.opp)}</strong></span>
+            <span>Closing: <strong>${formatTimeTo12Hr(e.closing)}</strong></span>
+            <span>Hours: <strong>${e.hours}</strong></span>
+            <span>Idle/BD: <strong>${e.idle || '-'}</strong></span>
+            <span style="grid-column: span 2;">Remark: <strong>${e.remark || '-'}</strong></span>
+          </div>
+          <div class="entry-hint">Double Tap to Edit | Hold to Delete</div>
+        `;
+
+        card.ondblclick = () => openEntryModal(idx);
+
+        let pressTimer;
+        card.addEventListener('touchstart', () => {
+          pressTimer = setTimeout(() => {
+            deleteEntry(idx);
+          }, 700);
+        });
+        card.addEventListener('touchend', () => {
+          clearTimeout(pressTimer);
+        });
+
+        cardListContainer.appendChild(card);
+      });
+
+      document.getElementById('sumDiesel').innerText = totalDiesel + ' Ltr';
+      document.getElementById('sumHours').innerText = totalHoursNum + ' h';
+      document.getElementById('sumEntries').innerText = entries.length;
+    }
+
+    function preparePrintTable() {
+      const machineData = appData.machines[currentMachine];
+      const monthObj = machineData.months[currentMonthId] || { entries: [] };
+      const entries = monthObj.entries || [];
+      const printTbody = document.getElementById('printTableBody');
+      printTbody.innerHTML = '';
+
+      entries.sort((a, b) => new Date(a.date) - new Date(b.date));
+
+      entries.forEach((e) => {
+        const parts = e.date.split('-');
+        const formattedDate = parts.length === 3 ? `${parts[2]}-${parts[1]}-${parts[0]}` : e.date;
+
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${formattedDate}</td>
+          <td>${formatTimeTo12Hr(e.opp)}</td>
+          <td>${formatTimeTo12Hr(e.closing)}</td>
+          <td>${e.hours}</td>
+          <td>${e.diesel} L</td>
+          <td></td>
+          <td>${e.idle || '-'}</td>
+          <td style="text-align: left; padding-left: 6px;">${e.remark || '-'}</td>
+          <td></td>
+          <td></td>
+        `;
+        printTbody.appendChild(tr);
+      });
+
+      const totalRowsToDisplay = Math.max(entries.length, 31);
+      for (let i = entries.length; i < totalRowsToDisplay; i++) {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+        `;
+        printTbody.appendChild(tr);
+      }
+    }
+
+    function openEntryModal(index) {
+      document.getElementById('editIndex').value = index;
+      document.getElementById('overlay').style.display = 'block';
+      document.getElementById('addForm').classList.add('show');
+
+      if (index === -1) {
+        document.getElementById('formTitle').innerText = "Add Daily Entry";
+        document.getElementById('inputDate').valueAsDate = new Date();
+        document.getElementById('inputOpp').value = '08:00';
+        document.getElementById('inputClosing').value = '18:00';
+        autoCalculateHours();
+        document.getElementById('inputDiesel').value = '';
+        document.getElementById('inputIdle').value = '';
+        document.getElementById('inputRemark').value = '';
+      } else {
+        document.getElementById('formTitle').innerText = "Edit Entry";
+        const machineData = appData.machines[currentMachine];
+        const item = machineData.months[currentMonthId].entries[index];
+        document.getElementById('inputDate').value = item.date;
+        document.getElementById('inputOpp').value = item.opp;
+        document.getElementById('inputClosing').value = item.closing;
+        document.getElementById('inputHours').value = item.hours;
+        document.getElementById('inputDiesel').value = item.diesel;
+        document.getElementById('inputIdle').value = item.idle;
+        document.getElementById('inputRemark').value = item.remark;
+      }
+    }
+
+    function hideForm() {
+      document.getElementById('overlay').style.display = 'none';
+      document.getElementById('addForm').classList.remove('show');
+    }
+
+    function saveEntryData(e) {
+      e.preventDefault();
+      const index = parseInt(document.getElementById('editIndex').value);
+      const dateVal = document.getElementById('inputDate').value;
+      const calculatedMonthId = dateVal.slice(0, 7);
+
+      if (!currentMonthId) {
+        currentMonthId = calculatedMonthId;
+      }
+
+      const machineData = appData.machines[currentMachine];
+      if (!machineData.months[currentMonthId]) {
+        machineData.months[currentMonthId] = { entries: [] };
+      }
+
+      const remarkVal = document.getElementById('inputRemark').value.trim() || '-';
+      
+      if (remarkVal !== '-' && !appData.savedRemarks.includes(remarkVal)) {
+        appData.savedRemarks.push(remarkVal);
+        updateRemarkSuggestions();
+      }
+
+      const entryObj = {
+        date: dateVal,
+        opp: document.getElementById('inputOpp').value,
+        closing: document.getElementById('inputClosing').value,
+        hours: document.getElementById('inputHours').value,
+        diesel: document.getElementById('inputDiesel').value,
+        idle: document.getElementById('inputIdle').value || '-',
+        remark: remarkVal
+      };
+
+      const entries = machineData.months[currentMonthId].entries;
+      if (index === -1) {
+        entries.push(entryObj);
+      } else {
+        entries[index] = entryObj;
+      }
+
+      saveAppData();
+      hideForm();
+      if (document.getElementById('monthDetailView').style.display === 'block') {
+        openMonthRegister(currentMonthId);
+      } else {
+        renderHome();
+      }
+    }
+
+    function deleteEntry(index) {
+      if (confirm("Kya aap is entry ko delete karna chahte hain?")) {
+        const machineData = appData.machines[currentMachine];
+        machineData.months[currentMonthId].entries.splice(index, 1);
+        saveAppData();
+        openMonthRegister(currentMonthId);
+      }
+    }
+
+    function exportData() {
+      const dataStr = JSON.stringify(appData, null, 2);
+      const blob = new Blob([dataStr], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `machinery_register_backup_${new Date().toISOString().split('T')[0]}.json`;
+      a.click();
+    }
+
+    function importData() {
+      const input = document.createElement('input');
+      input.type = 'file';
+      input.accept = '.json';
+      input.onchange = e => {
+        const file = e.target.files[0];
+        const reader = new FileReader();
+        reader.onload = event => {
+          try {
+            const imported = JSON.parse(event.target.result);
+            if (imported.machines) {
+              appData = imported;
+              saveAppData();
+              currentMachine = Object.keys(appData.machines)[0];
+              initApp();
+              alert("Data successfully restore ho gaya hai!");
+            }
+          } catch (err) {
+            alert("Backup file invalid hai!");
+          }
+        };
+        reader.readAsText(file);
+      };
+      input.click();
+    }
+
+    window.onload = initApp;
+  </script>
+</body>
+</html>
